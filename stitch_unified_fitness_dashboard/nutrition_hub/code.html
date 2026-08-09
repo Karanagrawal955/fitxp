@@ -1,0 +1,330 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FitJourney - Nutrition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Hanken+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "tertiary-container": "#ca8100",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "primary-fixed-dim": "#afc6ff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary": "#ffb95f",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#32353d",
+                        "on-primary": "#002d6c",
+                        "on-tertiary-container": "#3e2400",
+                        "primary-fixed": "#d9e2ff",
+                        "on-secondary-fixed": "#002113",
+                        "on-secondary-container": "#00311f",
+                        "surface-container-low": "#191b23",
+                        "inverse-on-surface": "#2d3039",
+                        "surface-variant": "#32353d",
+                        "background": "#10131b",
+                        "surface-container": "#1d1f27",
+                        "surface-container-lowest": "#0b0e15",
+                        "outline-variant": "#424754",
+                        "inverse-primary": "#0059c7",
+                        "on-secondary": "#003824",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-tertiary": "#472a00",
+                        "on-surface-variant": "#c2c6d7",
+                        "surface-dim": "#10131b",
+                        "primary-container": "#528dff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#00275f",
+                        "outline": "#8c90a0",
+                        "inverse-surface": "#e1e2ed",
+                        "primary": "#afc6ff",
+                        "surface-bright": "#363941",
+                        "on-primary-fixed": "#001943",
+                        "on-background": "#e1e2ed",
+                        "surface-tint": "#afc6ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary-container": "#00a572",
+                        "surface": "#10131b",
+                        "on-surface": "#e1e2ed",
+                        "secondary": "#4edea3",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-container-high": "#272a32",
+                        "on-primary-fixed-variant": "#004398"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "40px",
+                        "margin-mobile": "16px",
+                        "xl": "64px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "gutter": "20px",
+                        "margin-desktop": "48px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Sora"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Sora"],
+                        "headline-lg-mobile": ["Sora"],
+                        "body-md": ["Hanken Grotesk"],
+                        "stat-xl": ["Sora"],
+                        "label-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "stat-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #10131b; color: #e1e2ed; }
+        .glass-card {
+            background: linear-gradient(180deg, #242832 0%, #1A1D24 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+        .progress-bar-glow {
+            box-shadow: 0 0 10px rgba(175, 198, 255, 0.5);
+        }
+        .progress-bar-glow-sec {
+            box-shadow: 0 0 10px rgba(78, 222, 163, 0.5);
+        }
+        .circular-chart { display: block; margin: 0 auto; max-width: 80%; max-height: 250px; }
+        .circle-bg { fill: none; stroke: #272a32; stroke-width: 3.8; }
+        .circle { fill: none; stroke-width: 2.8; stroke-linecap: round; animation: progress 1s ease-out forwards; }
+        @keyframes progress { 0% { stroke-dasharray: 0 100; } }
+    </style>
+</head>
+<body class="font-body-md bg-background min-h-screen pb-24 md:pb-8 pt-16 md:pt-24 selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 dark:bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-md flex justify-between items-center px-margin-mobile h-16 max-w-7xl mx-auto md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/10 shadow-sm cursor-pointer hover:opacity-80 transition-opacity">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A futuristic fitness avatar featuring a dynamic glowing wireframe silhouette of an athlete in motion, set against a deep obsidian space background with subtle electric blue geometric accents. The style is premium, 3D rendered, and highly energetic, reflecting a high-performance digital aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJriB5c0uGKz3Wet1P2B6dbdq2UMTk6BSHYpKbNq2VzUaZXuaAyTIHH2saJ-gum8LXR5tmwnNS8MLom_RnV3UO1iKaHf_Sg5XYp9CN3IblT2p53c4zrdpYp65oiIwniM8Yl8POZ4mzolaKgMz7FblsxlihBHE3cNSUxU05AdA5KUcT75X_8b5MLlHaUdjoDUEFc-Lc5cbOiWv8Wnfiiq4CiH-Bl9cd-Y8a1Wlth80xtJCKqKOhEvgZjA">
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-headline-lg tracking-tighter text-primary dark:text-primary-fixed-dim">FitJourney</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity flex items-center gap-2 h-full" href="#"><span class="material-symbols-outlined">home</span>Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity flex items-center gap-2 h-full" href="#"><span class="material-symbols-outlined">fitness_center</span>Workout</a>
+<a class="font-label-md text-label-md text-primary hover:opacity-80 transition-opacity flex items-center gap-2 h-full border-b-2 border-primary" href="#"><span class="material-symbols-outlined">restaurant</span>Nutrition</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity flex items-center gap-2 h-full" href="#"><span class="material-symbols-outlined">show_chart</span>Progress</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity flex items-center gap-2 h-full" href="#"><span class="material-symbols-outlined">person</span>Profile</a>
+</div>
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</button>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop space-y-lg mt-md">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Daily Summary -->
+<div class="lg:col-span-5 space-y-gutter">
+<section class="glass-card rounded-xl p-md flex flex-col items-center relative overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent opacity-50"></div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface w-full text-left mb-6 z-10">Daily Summary</h2>
+<div class="relative w-48 h-48 mb-8 z-10">
+<svg class="circular-chart primary" viewBox="0 0 36 36">
+<path class="circle-bg" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+<path class="circle" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#afc6ff" stroke-dasharray="65, 100"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-stat-xl text-stat-xl text-primary">1450</span>
+<span class="font-label-md text-label-md text-on-surface-variant">/ 2200 kcal</span>
+</div>
+</div>
+<div class="w-full space-y-4 z-10">
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-2">
+<span class="text-on-surface-variant">Protein</span>
+<span class="text-on-surface">90g / 150g</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-primary h-2 rounded-full progress-bar-glow" style="width: 60%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-2">
+<span class="text-on-surface-variant">Carbs</span>
+<span class="text-on-surface">120g / 250g</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full progress-bar-glow-sec" style="width: 48%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-2">
+<span class="text-on-surface-variant">Fats</span>
+<span class="text-on-surface">45g / 70g</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-tertiary h-2 rounded-full" style="width: 64%; box-shadow: 0 0 10px rgba(255, 185, 95, 0.5);"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-xl p-md flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">water_drop</span>
+</div>
+<div>
+<h3 class="font-headline-lg-mobile text-body-md font-semibold text-on-surface">Hydration</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">1.5 / 3.0 Liters</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary-fixed transition-colors active:scale-95 shadow-[0_0_15px_rgba(175,198,255,0.4)]">
+<span class="material-symbols-outlined">add</span>
+</button>
+</section>
+</div>
+<!-- Right Column: Meals & Insights -->
+<div class="lg:col-span-7 space-y-gutter">
+<section class="glass-card rounded-xl p-md">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Meals</h2>
+<button class="font-label-md text-label-md text-primary flex items-center gap-1 hover:opacity-80">
+<span class="material-symbols-outlined text-[18px]">add_circle</span> Log Meal
+                        </button>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container/50 border border-white/5 rounded-lg p-4 hover:bg-surface-container/80 transition-colors cursor-pointer group">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">breakfast_dining</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-on-surface">Breakfast</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">Oatmeal &amp; Protein Shake</p>
+</div>
+</div>
+<span class="font-label-md text-label-md font-semibold text-primary">450 kcal</span>
+</div>
+</div>
+<div class="bg-surface-container/50 border border-white/5 rounded-lg p-4 hover:bg-surface-container/80 transition-colors cursor-pointer group">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">lunch_dining</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-on-surface">Lunch</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">Chicken Salad Bowl</p>
+</div>
+</div>
+<span class="font-label-md text-label-md font-semibold text-secondary">620 kcal</span>
+</div>
+</div>
+<div class="bg-surface-container/50 border border-white/5 rounded-lg p-4 hover:bg-surface-container/80 transition-colors cursor-pointer group border-dashed border-outline-variant/50 flex items-center justify-center h-[88px]">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">add</span> Add Dinner</span>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-xl p-md">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-6">Weekly Trends</h2>
+<div class="h-48 flex items-end justify-between gap-2 px-2 relative">
+<!-- Chart Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20 py-2">
+<div class="w-full h-px bg-outline-variant"></div>
+<div class="w-full h-px bg-outline-variant"></div>
+<div class="w-full h-px bg-outline-variant"></div>
+</div>
+<!-- Bars -->
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer z-10">
+<div class="w-full bg-surface-container-high rounded-t-sm h-full flex flex-col-reverse group-hover:bg-surface-variant transition-colors">
+<div class="bg-primary/80 w-full h-[60%] rounded-t-sm relative"></div>
+</div>
+<span class="font-label-md text-[10px] text-on-surface-variant">Mon</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer z-10">
+<div class="w-full bg-surface-container-high rounded-t-sm h-full flex flex-col-reverse group-hover:bg-surface-variant transition-colors">
+<div class="bg-primary/80 w-full h-[75%] rounded-t-sm relative"></div>
+</div>
+<span class="font-label-md text-[10px] text-on-surface-variant">Tue</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer z-10">
+<div class="w-full bg-surface-container-high rounded-t-sm h-full flex flex-col-reverse group-hover:bg-surface-variant transition-colors">
+<div class="bg-primary/80 w-full h-[65%] rounded-t-sm relative"></div>
+</div>
+<span class="font-label-md text-[10px] text-on-surface-variant">Wed</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer z-10">
+<div class="w-full bg-surface-container-high rounded-t-sm h-full flex flex-col-reverse group-hover:bg-surface-variant transition-colors">
+<div class="bg-primary w-full h-[90%] rounded-t-sm relative progress-bar-glow"></div>
+</div>
+<span class="font-label-md text-[10px] text-primary">Thu</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer z-10">
+<div class="w-full bg-surface-container-high rounded-t-sm h-full flex flex-col-reverse group-hover:bg-surface-variant transition-colors">
+<div class="bg-primary/40 w-full h-[40%] rounded-t-sm relative"></div>
+</div>
+<span class="font-label-md text-[10px] text-on-surface-variant">Fri</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer z-10">
+<div class="w-full bg-surface-container-high rounded-t-sm h-full flex flex-col-reverse group-hover:bg-surface-variant transition-colors">
+<div class="bg-surface-variant w-full h-[5%] rounded-t-sm relative"></div>
+</div>
+<span class="font-label-md text-[10px] text-on-surface-variant">Sat</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer z-10">
+<div class="w-full bg-surface-container-high rounded-t-sm h-full flex flex-col-reverse group-hover:bg-surface-variant transition-colors">
+<div class="bg-surface-variant w-full h-[5%] rounded-t-sm relative"></div>
+</div>
+<span class="font-label-md text-[10px] text-on-surface-variant">Sun</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-lg flex justify-around items-center px-2 py-3">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">fitness_center</span>
+<span class="font-label-md text-[10px] mt-1">Workout</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed bg-secondary-container/20 rounded-xl px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-md text-[10px] mt-1">Nutrition</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">show_chart</span>
+<span class="font-label-md text-[10px] mt-1">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

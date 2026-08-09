@@ -1,0 +1,293 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FitJourney - Achievements</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Sora:wght@100..800&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#3c0091",
+                        "surface-dim": "#131315",
+                        "tertiary": "#d0bcff",
+                        "primary-fixed": "#d9e2ff",
+                        "surface-tint": "#afc6ff",
+                        "secondary-container": "#00a572",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#002113",
+                        "secondary": "#4edea3",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-background": "#e5e1e4",
+                        "primary": "#afc6ff",
+                        "on-primary-fixed": "#001943",
+                        "inverse-on-surface": "#313032",
+                        "on-primary-container": "#00275f",
+                        "surface-bright": "#39393b",
+                        "surface-container-low": "#1c1b1d",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#afc6ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#201f21",
+                        "surface": "#131315",
+                        "on-tertiary-container": "#340080",
+                        "on-secondary": "#003824",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-variant": "#353437",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "on-primary": "#002d6c",
+                        "surface-container-highest": "#353437",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "on-secondary-container": "#00311f",
+                        "primary-container": "#528dff",
+                        "inverse-primary": "#0059c7",
+                        "surface-container-high": "#2a2a2c",
+                        "on-primary-fixed-variant": "#004398",
+                        "tertiary-fixed": "#e9ddff",
+                        "outline-variant": "#424754",
+                        "on-surface-variant": "#c2c6d7",
+                        "on-secondary-fixed-variant": "#005236",
+                        "tertiary-container": "#a078ff",
+                        "outline": "#8c90a0",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-surface": "#e5e1e4",
+                        "background": "#131315",
+                        "inverse-surface": "#e5e1e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container_max": "1440px",
+                        "margin_mobile": "16px",
+                        "margin_desktop": "40px",
+                        "gutter": "24px",
+                        "sidebar_width": "280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Sora"],
+                        "stat-xl": ["Sora"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Space Mono"],
+                        "headline-md": ["Sora"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Sora"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "stat-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .hex-badge {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        .glass-panel {
+            background: rgba(19, 19, 21, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-active {
+            box-shadow: inset 0 0 20px rgba(175, 198, 255, 0.1), 0 0 15px rgba(175, 198, 255, 0.2);
+            border-color: rgba(175, 198, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-x-hidden">
+<!-- TopNavBar (Web) -->
+<header class="hidden md:flex justify-between items-center h-16 px-margin_desktop ml-sidebar_width bg-surface/40 dark:bg-surface/40 backdrop-blur-xl fixed top-0 right-0 left-0 z-50 border-b border-white/10 shadow-sm">
+<div class="font-headline-md text-headline-md font-bold text-primary">FitJourney</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95" data-icon="bolt">bolt</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Web) -->
+<nav class="hidden md:flex flex-col p-6 gap-2 bg-surface/60 dark:bg-surface/60 backdrop-blur-2xl fixed left-0 top-0 bottom-0 w-sidebar_width z-50 border-r border-white/10 shadow-2xl">
+<div class="mb-8">
+<div class="font-headline-lg text-headline-lg font-bold text-primary tracking-tighter mb-6">FitJourney</div>
+<div class="flex items-center gap-4 p-4 glass-panel rounded-xl">
+<img alt="Hunter Avatar" class="w-12 h-12 rounded-full object-cover border border-primary/30" data-alt="A futuristic, cyberpunk-style avatar portrait of a fit individual with glowing neon blue and purple accents, set against a dark void background. The aesthetic is high-contrast and premium, suitable for an RPG-style fitness app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALiwNU24u2FA-xl2w98cDEMWcxar8GKkS9fwYj5PpVHuN9lqQbuUV5nT-jAg8EWExOYlRIPP3KZlEUaygiudYw0-7IyprPFccsTC9cLeC2RAb4ItvJd3gmO7g4c_T7YZZqSsyDUEft2I6yl_mIZB78reS0M1J3O6YnT0io3Gv6KSuTad07sRf2yMmfMJfUPwCGREcviOZ7-9xYQyWurKHMXDbjXCc9JEzUSYjV-HiosLWxKApnac1x7w">
+<div>
+<div class="font-headline-md text-sm font-bold text-on-background">Level 42 Hunter</div>
+<div class="font-label-caps text-label-caps text-primary">Rank: Elite</div>
+</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 rounded-xl hover:text-primary transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 rounded-xl hover:text-primary transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="fitness_center">fitness_center</span>
+<span class="font-body-md text-body-md">Workouts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 rounded-xl hover:text-primary transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-body-md text-body-md">Nutrition</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 rounded-xl hover:text-primary transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="font-body-md text-body-md">Progress</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-xl font-bold cursor-pointer active:scale-95 shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+<span class="font-body-md text-body-md">Achievements</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 rounded-xl hover:text-primary transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="military_tech">military_tech</span>
+<span class="font-body-md text-body-md">Challenges</span>
+</a>
+
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 rounded-xl hover:text-primary transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-body-md text-body-md">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 rounded-xl hover:text-primary transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</div>
+<button class="mt-auto w-full py-3 px-4 bg-primary text-on-primary font-headline-md text-sm font-bold rounded-xl hover:shadow-[0_0_15px_rgba(175,198,255,0.4)] transition-all">
+            Start Quest
+        </button>
+</nav>
+<!-- Main Content -->
+<main class="md:ml-sidebar_width pt-24 px-margin_mobile md:px-margin_desktop pb-24 max-w-container_max mx-auto">
+<header class="mb-12">
+<h1 class="font-headline-lg text-headline-lg md:font-stat-xl md:text-stat-xl text-primary mb-2">Hunter Milestones</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Track your evolutionary progress and legendary feats.</p>
+</header>
+<!-- Rank Progression Timeline -->
+<section class="mb-16 relative">
+<div class="absolute top-1/2 left-0 right-0 h-1 bg-surface-container-highest -translate-y-1/2 rounded-full overflow-hidden z-0">
+<div class="h-full bg-gradient-to-r from-primary to-secondary w-[65%]"></div>
+</div>
+<div class="relative z-10 flex justify-between items-center px-4">
+<!-- Novice -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-16 h-16 hex-badge bg-surface-container-highest flex items-center justify-center border-2 border-outline-variant">
+<span class="font-headline-md text-headline-md text-outline">D</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline-variant">Novice</span>
+</div>
+<!-- Pro -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-16 h-16 hex-badge bg-primary-container flex items-center justify-center border-2 border-primary shadow-[0_0_20px_rgba(175,198,255,0.3)]">
+<span class="font-headline-md text-headline-md text-on-primary-container font-bold">C</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary">Pro</span>
+</div>
+<!-- Elite (Current) -->
+<div class="flex flex-col items-center gap-3 relative">
+<div class="absolute inset-0 bg-secondary blur-xl opacity-20 rounded-full"></div>
+<div class="w-20 h-20 hex-badge bg-gradient-to-br from-secondary-container to-surface-dim flex items-center justify-center border-2 border-secondary shadow-[0_0_30px_rgba(78,222,163,0.4)] relative z-10">
+<span class="font-headline-lg text-headline-lg text-secondary font-bold">B</span>
+</div>
+<span class="font-label-caps text-label-caps text-secondary font-bold">Elite</span>
+</div>
+<!-- Master -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-16 h-16 hex-badge glass-panel flex items-center justify-center border-2 border-white/10 opacity-50">
+<span class="font-headline-md text-headline-md text-on-surface-variant">A</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant opacity-50">Master</span>
+</div>
+<!-- Legend -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-16 h-16 hex-badge glass-panel flex items-center justify-center border-2 border-white/10 opacity-50">
+<span class="font-headline-md text-headline-md text-on-surface-variant">S</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant opacity-50">Legend</span>
+</div>
+</div>
+</section>
+<!-- Performance Badges Grid -->
+<section>
+<h2 class="font-headline-md text-headline-md text-on-background mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="local_fire_department">local_fire_department</span>
+                Performance Badges
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Unlocked: First Blood -->
+<div class="glass-panel p-6 rounded-xl glow-active flex flex-col items-center text-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(175,198,255,0.3)]">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" data-icon="flag">flag</span>
+</div>
+<h3 class="font-headline-md text-lg text-on-background mb-2">First Awakening</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-4">Complete your very first workout quest.</p>
+<div class="mt-auto bg-primary/20 text-primary font-label-caps text-xs px-3 py-1 rounded-full border border-primary/30">
+                        Unlocked
+                    </div>
+</div>
+<!-- Unlocked: 7 Day Streak -->
+<div class="glass-panel p-6 rounded-xl glow-active flex flex-col items-center text-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(78,222,163,0.3)]">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl" data-icon="timer">timer</span>
+</div>
+<h3 class="font-headline-md text-lg text-on-background mb-2">Relentless Pursuit</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-4">Maintain a 7-day active quest streak.</p>
+<div class="mt-auto bg-secondary/20 text-secondary font-label-caps text-xs px-3 py-1 rounded-full border border-secondary/30">
+                        Unlocked
+                    </div>
+</div>
+<!-- In Progress: Power Lifter -->
+<div class="glass-panel p-6 rounded-xl flex flex-col items-center text-center relative overflow-hidden">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-4 border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl" data-icon="fitness_center">fitness_center</span>
+</div>
+<h3 class="font-headline-md text-lg text-on-background mb-2">Titan Strength</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-4">Lift a total of 10,000 lbs in a single week.</p>
+<div class="w-full mt-auto">
+<div class="flex justify-between font-label-caps text-xs text-on-surface-variant mb-1">
+<span class="">8,500</span>
+<span class="">10,000</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-outline w-[85%]"></div>
+</div>
+</div>
+</div>
+<!-- Locked: Endurance -->
+<div class="glass-panel p-6 rounded-xl opacity-60 flex flex-col items-center text-center relative overflow-hidden grayscale">
+<div class="absolute inset-0 bg-surface/50 backdrop-blur-sm z-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant drop-shadow-md" data-icon="lock">lock</span>
+</div>
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-4 border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl" data-icon="directions_run">directions_run</span>
+</div>
+<h3 class="font-headline-md text-lg text-on-background mb-2">Shadow Walker</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-4">Run 50 miles total across all quests.</p>
+<div class="mt-auto bg-surface-container-highest text-on-surface-variant font-label-caps text-xs px-3 py-1 rounded-full border border-outline-variant">
+                        Locked
+                    </div>
+</div>
+</div>
+</section>
+</main>
+
+
+</body></html>

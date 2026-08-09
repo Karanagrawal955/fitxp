@@ -1,0 +1,399 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FIT JOURNEY - Leaderboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&amp;family=Sora:wght@600;700;800&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Rank Gradients & Glows */
+        .rank-s {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            border-color: #FFD700;
+        }
+        .text-rank-s {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .rank-a {
+            background: linear-gradient(135deg, #FF4500, #DC143C);
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
+            border-color: #FF4500;
+        }
+        .text-rank-a {
+            background: linear-gradient(135deg, #FF4500, #DC143C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .rank-b {
+            background: linear-gradient(135deg, #1E90FF, #0000CD);
+            box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
+            border-color: #1E90FF;
+        }
+        .text-rank-b {
+            background: linear-gradient(135deg, #1E90FF, #0000CD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .glass-panel {
+            background: rgba(19, 19, 21, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .xp-bar-bg {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .xp-bar-fill {
+            background: linear-gradient(90deg, #528dff, #a078ff);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#e5e1e4",
+                        "tertiary-container": "#a078ff",
+                        "primary-container": "#528dff",
+                        "primary": "#afc6ff",
+                        "primary-fixed-dim": "#afc6ff",
+                        "tertiary": "#d0bcff",
+                        "outline": "#8c90a0",
+                        "surface-tint": "#afc6ff",
+                        "on-secondary": "#003824",
+                        "surface-bright": "#39393b",
+                        "inverse-primary": "#0059c7",
+                        "on-primary-fixed-variant": "#004398",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "on-primary-container": "#00275f",
+                        "on-primary-fixed": "#001943",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container-highest": "#353437",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#131315",
+                        "on-tertiary": "#3c0091",
+                        "surface-variant": "#353437",
+                        "on-tertiary-fixed": "#23005c",
+                        "surface-container-high": "#2a2a2c",
+                        "on-background": "#e5e1e4",
+                        "outline-variant": "#424754",
+                        "surface-container-low": "#1c1b1d",
+                        "surface-container": "#201f21",
+                        "surface": "#131315",
+                        "on-primary": "#002d6c",
+                        "on-surface": "#e5e1e4",
+                        "primary-fixed": "#d9e2ff",
+                        "background": "#131315",
+                        "inverse-on-surface": "#313032",
+                        "on-secondary-container": "#00311f",
+                        "on-surface-variant": "#c2c6d7",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "secondary-fixed": "#6ffbbe",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-secondary-fixed": "#002113",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "secondary": "#4edea3",
+                        "secondary-container": "#00a572",
+                        "on-tertiary-container": "#340080"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    spacing: {
+                        sidebar_width: "280px",
+                        margin_desktop: "40px",
+                        margin_mobile: "16px",
+                        container_max: "1440px",
+                        gutter: "24px"
+                    },
+                    fontFamily: {
+                        "stat-xl": ["Sora"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Sora"],
+                        "label-caps": ["Space Mono"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Sora"],
+                        "headline-lg-mobile": ["Sora"]
+                    },
+                    fontSize: {
+                        "stat-xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "label-caps": ["12px", { lineHeight: "1", letterSpacing: "0.1em", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "1.2", fontWeight: "700" }]
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden min-h-screen">
+<!-- Background Elements -->
+<div class="fixed inset-0 z-[-1] pointer-events-none">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(82,141,255,0.05)_0%,transparent_70%)]"></div>
+<div class="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-[radial-gradient(circle_at_center,rgba(160,120,255,0.08)_0%,transparent_60%)] rounded-full blur-[100px]"></div>
+</div>
+<div class="flex h-screen">
+<!-- Desktop Sidebar -->
+<aside class="hidden md:flex flex-col h-full py-8 fixed left-0 top-0 w-sidebar_width bg-surface/40 backdrop-blur-[20px] border-r border-white/10 shadow-2xl z-40">
+<div class="px-8 mb-10 flex flex-col items-center">
+<div class="w-24 h-24 rounded-full border-2 border-primary p-1 mb-4 relative">
+<img class="w-full h-full rounded-full object-cover" data-alt="A futuristic RPG-style avatar portrait of a powerful hunter, wearing sleek dark armor with electric blue glowing accents, set against a dark void background. Cinematic lighting, highly detailed, cyberpunk aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGQxYDF1zS7L3jpCP4vDwQYRRyEMaL5DYIKjBavmp8WITvPe5NLtkSYZqmOg97REg6uLQU3bbsEtR6OArLfBQjSnvxknNkrnphmlZAjRTpqPn_pi7hPg9UQ6Zaqcmlci6TUMtRqY7CdwcQ3tAlexaQyGKe2Wx-2sqmIkBtnFeEPeFyFB2kRW-pOUAQ0FNNdalEhe9yhY3srC_XgKTsbUCL4MPkY1GwjsKx1XSJdgQgT4qigPIrFkHDSg">
+<div class="absolute -bottom-2 -right-4 w-auto px-2 h-8 rounded-full rank-a flex items-center justify-center font-stat-xl text-[12px] text-white">PRO</div>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary tracking-tighter text-center">MEMBER LEVEL 42</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 text-center">Strength &amp; Conditioning</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2 px-4">
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-headline-md text-[16px]">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">fitness_center</span>
+<span class="font-headline-md text-[16px]">Workouts</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-headline-md text-[16px]">Nutrition</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-headline-md text-[16px]">Progress</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-headline-md text-[16px]">Achievements</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">ads_click</span>
+<span class="font-headline-md text-[16px]">Challenges</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-primary font-bold border-r-4 border-primary bg-primary/5 hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-headline-md text-[16px]">Leaderboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-headline-md text-[16px]">Profile</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-headline-md text-[16px]">Settings</span>
+</a>
+</nav>
+<div class="px-8 mt-auto">
+<button class="w-full py-3 px-4 bg-primary/10 border border-primary/30 rounded-lg text-primary font-label-caps text-label-caps hover:bg-primary/20 transition-colors shadow-[0_0_15px_rgba(175,198,255,0.1)]">
+                    GO TO CHALLENGES
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-sidebar_width overflow-y-auto">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center h-20 px-margin_mobile md:px-margin_desktop bg-surface/40 backdrop-blur-[30px] border-b border-white/10 shadow-lg sticky top-0 z-30">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-extrabold text-primary uppercase italic tracking-wider">FIT JOURNEY</h1>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors focus-within:ring-2 focus-within:ring-primary/50 rounded-full p-2">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors focus-within:ring-2 focus-within:ring-primary/50 rounded-full p-2">
+<span class="material-symbols-outlined">contrast</span>
+</button>
+<img class="w-10 h-10 rounded-full border border-primary/50 object-cover md:hidden" data-alt="A small hexagonal icon showing a glowing metallic 'S' rank badge. Sleek cyberpunk aesthetic with neon blue edges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAHOJKBoN6qXFwUcvy_xTCElffWlrjfuwTm1aDmFj69yk3Tfur-wrt0qzDY5rrDv3QbAIQaYZ58nJmGM_Fht_Vu6rDOWra1KZ9m6zlh6-u7AOWDAt5-toLDfweSRpAX9zjXkGm5sPvCUMmZ6hdjbuWohNUhvi3zi54X6zsnOAmPFh-TgxUBF2IM8XDHJaSiI6VzlTtU_UKT88qHJNUNGH63OfKZQVP10lhuMzfpG5_WzeUw4DOr_uO2A">
+</div>
+</header>
+<div class="p-margin_mobile md:p-margin_desktop max-w-container_max mx-auto w-full">
+<!-- Page Header -->
+<div class="mb-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div>
+<h2 class="font-stat-xl text-stat-xl text-on-surface mb-2 tracking-tight">GLOBAL FITNESS LEADERBOARD</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">See where you stand among the top members.</p>
+</div>
+<div class="flex gap-4">
+<select class="bg-surface-container border border-outline-variant text-on-surface rounded-lg px-4 py-2 font-body-md focus:ring-primary focus:border-primary outline-none">
+<option>Global (All Tiers)</option>
+<option>Elite Only</option>
+<option>Professional Only</option>
+<option>My Region</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Left Column: Leaderboard -->
+<div class="lg:col-span-2 flex flex-col gap-4">
+<!-- Top 3 Podium -->
+<div class="grid grid-cols-3 gap-4 mb-8 items-end pt-8">
+<!-- Rank 2 -->
+<div class="glass-panel rounded-xl p-4 flex flex-col items-center relative order-1 transform translate-y-4">
+<div class="absolute -top-6 bg-surface-container rounded-full w-12 h-12 flex items-center justify-center font-headline-md text-on-surface-variant border-2 border-outline-variant">#2</div>
+<img class="w-16 h-16 rounded-full border-2 border-primary object-cover mb-2 mt-4" data-alt="Avatar portrait of a fierce female hunter with silver hair and glowing purple eyes, wearing high-tech sleek combat gear. Dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaEOJ_-SMjstnm0w1rpfOJMEAP3GAI_GJ2pskeFIGUL0sE5PQ7f3QdUMFhI0wGpgEwlsFErVoV5sA34M6eJRW-soQiMQnAgwFAtvVq9Rx_UWb5w_J8XVV37xKdna7tA3Nm1_02wOox57Fr7DePBT47-v4V5X9gtJbJVFZqiBn0ZFCQKl7B0cJVCukkuFtgmLEePXhP0xjok2_ZVsFkcNlSfGQEfc4s1PXkZb0S7g29Xbf8SY_4h2LZsg">
+<span class="font-headline-md text-[18px] text-on-surface truncate w-full text-center">Sarah Connor</span>
+<span class="font-label-caps text-label-caps text-tertiary-container mt-1">LVL 99</span>
+<div class="mt-3 px-3 py-1 rounded-full rank-s text-white font-label-caps text-[10px]">ELITE</div>
+</div>
+<!-- Rank 1 -->
+<div class="glass-panel rounded-xl p-4 flex flex-col items-center relative order-2 border-primary/50 shadow-[0_0_30px_rgba(82,141,255,0.15)] z-10">
+<div class="absolute -top-8 rank-s rounded-full w-16 h-16 flex items-center justify-center font-stat-xl text-[24px] text-white shadow-lg">#1</div>
+<img class="w-20 h-20 rounded-full border-4 border-yellow-500 object-cover mb-2 mt-6" data-alt="Avatar portrait of a legendary male hunter shrouded in dark shadows with piercing bright blue eyes. Wearing a stylized long coat. Cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkKfOg8TN6nkPfVmSMZ9NWNPKujLrFLYr7INS-3RZNwOuYud7dJ0EzoLaAHsrAXoxNoIkfrfL9wBRhWBkVf0X8CXl4TFul2CwFxuiaJ9Efn_Snv4Gl5IQKRx5oM5MWKbvjI2nDFt_L-c8S0I_be0PxoUm9y49BYXrD1j0gfI3hcZU5a8VzpcMJ9xNSD5MThlzJm4bd0g87e1CflY-oz-sH6w6fSlGW6k8yB7xw-_YgfUIkb8bgvUetsw">
+<span class="font-headline-md text-[20px] text-on-surface font-bold text-rank-s truncate w-full text-center">Marcus Johnson</span>
+<span class="font-label-caps text-label-caps text-primary mt-1">LVL MAX</span>
+<div class="mt-3 px-4 py-1 rounded-full rank-s text-white font-label-caps text-[12px] shadow-lg">MASTER</div>
+</div>
+<!-- Rank 3 -->
+<div class="glass-panel rounded-xl p-4 flex flex-col items-center relative order-3 transform translate-y-8">
+<div class="absolute -top-6 bg-surface-container rounded-full w-12 h-12 flex items-center justify-center font-headline-md text-on-surface-variant border-2 border-outline-variant">#3</div>
+<img class="w-16 h-16 rounded-full border-2 border-primary object-cover mb-2 mt-4" data-alt="Avatar portrait of a heavily armored brute hunter, massive shoulders, glowing orange visors. Dark sci-fi aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMFmc7Q6goKwrAqayLaUY1kANP2aHbclxaklm_Gz9vcPJyIuyQZ6DU3sM4i9utwUZBOfB1Ouaskdvxpx6mzUrxzKCxoSJi0NDXypbttA51KqmiNASM2QU1O_sK4VWRnsPflSUym1NBtLmaEgDsxibKT94d9836G5N93vqy2RYrxZKntRMQP996rE6yZrG26PIA8EUbR2SI1wvNrzHAxYayS0kPtzy1sVTUvcbSYJEregXB0ylJpJs5Jg">
+<span class="font-headline-md text-[18px] text-on-surface truncate w-full text-center">David Chen</span>
+<span class="font-label-caps text-label-caps text-tertiary-container mt-1">LVL 95</span>
+<div class="mt-3 px-3 py-1 rounded-full rank-s text-white font-label-caps text-[10px]">ELITE</div>
+</div>
+</div>
+<!-- List Items -->
+<div class="flex flex-col gap-3">
+<!-- User's Position (Highlighted) -->
+<div class="glass-panel rounded-xl p-4 flex items-center gap-4 border-primary bg-primary/5 shadow-[inset_0_0_20px_rgba(82,141,255,0.05)]">
+<span class="font-headline-md text-[20px] text-primary w-8 text-center">42</span>
+<img class="w-12 h-12 rounded-full border-2 border-primary object-cover" data-alt="A futuristic RPG-style avatar portrait of a powerful hunter, wearing sleek dark armor with electric blue glowing accents, set against a dark void background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2Cn7xgyeLg8fy57GhY1lk7JP2rBbOxPvw6diUN1qfXKu-m606qljUWrNBJpgTSUw-amTwKjp6b9foZiOEhHXa3ZGXtpCVmszFPT_NhXd7X34X9K39ibk8pHcBQW0Dcl_U58ByTUrbIu6DG8TwgAu5V1_HAsvTJrivvZv1u2ZO2G7FfalleGWOlkqlVCkvAInyc3wlffIg_O2lBIQKiIkTl7UeQblZX6qO7tb7OHjjd8m1QRvwBaiKqg">
+<div class="flex-1">
+<h3 class="font-headline-md text-[18px] text-on-surface">You</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">LVL 42 • Strength &amp; Conditioning</p>
+</div>
+<div class="hidden sm:flex items-center gap-2 mr-6 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">local_fire_department</span>
+<span class="font-label-caps">14 DAY STREAK</span>
+</div>
+<div class="w-auto px-3 h-10 rounded-full rank-a flex items-center justify-center font-headline-md text-[14px] text-white">PRO</div>
+</div>
+<!-- Other Hunters -->
+<div class="glass-panel rounded-xl p-4 flex items-center gap-4 hover:bg-white/5 transition-colors cursor-pointer">
+<span class="font-headline-md text-[20px] text-on-surface-variant w-8 text-center">4</span>
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center font-headline-md text-on-surface-variant border border-outline-variant">G</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[18px] text-on-surface">Alex W.</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">LVL 90</p>
+</div>
+<div class="w-auto px-3 h-10 rounded-full rank-a flex items-center justify-center font-headline-md text-[14px] text-white">PRO</div>
+</div>
+<div class="glass-panel rounded-xl p-4 flex items-center gap-4 hover:bg-white/5 transition-colors cursor-pointer">
+<span class="font-headline-md text-[20px] text-on-surface-variant w-8 text-center">5</span>
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center font-headline-md text-on-surface-variant border border-outline-variant">V</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[18px] text-on-surface">Sam T.</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">LVL 88</p>
+</div>
+<div class="w-auto px-3 h-10 rounded-full rank-a flex items-center justify-center font-headline-md text-[14px] text-white">PRO</div>
+</div>
+<div class="glass-panel rounded-xl p-4 flex items-center gap-4 hover:bg-white/5 transition-colors cursor-pointer opacity-80">
+<span class="font-headline-md text-[20px] text-on-surface-variant w-8 text-center">...</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Info & Challenges -->
+<div class="flex flex-col gap-6">
+<!-- Rank Progress -->
+<div class="glass-panel rounded-2xl p-6 relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary/20 blur-[50px] rounded-full pointer-events-none"></div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-6 tracking-widest">RANK EVOLUTION</h3>
+<div class="flex items-center justify-between mb-4">
+<div class="flex flex-col items-center">
+<div class="w-auto px-3 h-14 rounded-full rank-a flex items-center justify-center font-stat-xl text-[16px] text-white mb-2 shadow-[0_0_15px_rgba(255,69,0,0.3)]">PRO</div>
+<span class="font-label-caps text-label-caps text-on-surface">CURRENT</span>
+</div>
+<div class="flex-1 flex justify-center px-4">
+<span class="material-symbols-outlined text-outline-variant">double_arrow</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-auto px-3 h-14 rounded-full border-2 border-outline-variant bg-surface-container flex items-center justify-center font-stat-xl text-[16px] text-outline-variant mb-2 opacity-50 grayscale">ELITE</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">NEXT</span>
+</div>
+</div>
+<div class="mb-2 flex justify-between font-label-caps text-label-caps">
+<span class="text-primary">85,400 XP</span>
+<span class="text-on-surface-variant">100,000 XP</span>
+</div>
+<div class="w-full h-2 xp-bar-bg rounded-full overflow-hidden">
+<div class="h-full xp-bar-fill w-[85%] rounded-full shadow-[0_0_10px_#528dff]"></div>
+</div>
+<p class="font-body-md text-[14px] text-on-surface-variant mt-4 text-center">Top 5% of members globally.</p>
+</div>
+<!-- Seasonal Quests -->
+<div class="glass-panel rounded-2xl p-6 border-tertiary-container/30">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline-md text-[20px] text-tertiary-container font-bold flex items-center gap-2">
+<span class="material-symbols-outlined">stars</span>
+                                        SEASONAL CHALLENGE
+                                    </h3>
+<p class="font-body-md text-[14px] text-on-surface-variant mt-1">Endurance Marathon</p>
+</div>
+<div class="bg-surface-container px-3 py-1 rounded-md border border-outline-variant text-center">
+<span class="font-label-caps text-label-caps text-error block leading-none mb-1">ENDS IN</span>
+<span class="font-label-caps text-label-caps text-on-surface block leading-none">03d 14h</span>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Quest Task 1 -->
+<div class="bg-surface-container/50 rounded-lg p-4 border border-outline-variant/50">
+<div class="flex justify-between mb-2">
+<span class="font-headline-md text-[16px] text-on-surface">100km Total Distance</span>
+<span class="font-label-caps text-tertiary-container">+5,000 XP</span>
+</div>
+<div class="w-full h-1 xp-bar-bg rounded-full overflow-hidden mb-1">
+<div class="h-full bg-tertiary-container w-[75%] rounded-full"></div>
+</div>
+<span class="font-label-caps text-[10px] text-on-surface-variant">75/100 km</span>
+</div>
+<!-- Quest Task 2 -->
+<div class="bg-surface-container/50 rounded-lg p-4 border border-outline-variant/50">
+<div class="flex justify-between mb-2">
+<span class="font-headline-md text-[16px] text-on-surface">5 Elite Workouts</span>
+<span class="font-label-caps text-tertiary-container">+10,000 XP</span>
+</div>
+<div class="w-full h-1 xp-bar-bg rounded-full overflow-hidden mb-1">
+<div class="h-full bg-tertiary-container w-[40%] rounded-full"></div>
+</div>
+<span class="font-label-caps text-[10px] text-on-surface-variant">2/5 Completed</span>
+</div>
+</div>
+<button class="w-full mt-6 py-3 px-4 bg-tertiary-container/10 border border-tertiary-container/30 rounded-lg text-tertiary-container font-label-caps text-label-caps hover:bg-tertiary-container/20 transition-colors">
+                                VIEW ALL CHALLENGES
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

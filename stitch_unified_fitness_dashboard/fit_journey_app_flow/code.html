@@ -1,0 +1,256 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Fit Journey - Authentication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&amp;family=Sora:ital,wght@0,400;0,600;0,700;0,800;1,800&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#e5e1e4",
+                      "secondary-container": "#00a572",
+                      "on-tertiary": "#3c0091",
+                      "surface-container-highest": "#353437",
+                      "on-primary-container": "#00275f",
+                      "on-secondary": "#003824",
+                      "error-container": "#93000a",
+                      "surface-container-low": "#1c1b1d",
+                      "inverse-on-surface": "#313032",
+                      "on-tertiary-fixed": "#23005c",
+                      "surface-tint": "#afc6ff",
+                      "surface-dim": "#131315",
+                      "background": "#131315",
+                      "on-secondary-fixed": "#002113",
+                      "on-surface": "#e5e1e4",
+                      "on-tertiary-fixed-variant": "#5516be",
+                      "surface-container-high": "#2a2a2c",
+                      "on-error": "#690005",
+                      "on-background": "#e5e1e4",
+                      "error": "#ffb4ab",
+                      "outline": "#8c90a0",
+                      "primary-fixed-dim": "#afc6ff",
+                      "inverse-primary": "#0059c7",
+                      "secondary": "#4edea3",
+                      "surface-bright": "#39393b",
+                      "tertiary-fixed": "#e9ddff",
+                      "tertiary-container": "#a078ff",
+                      "surface": "#131315",
+                      "on-tertiary-container": "#340080",
+                      "tertiary": "#d0bcff",
+                      "on-secondary-container": "#00311f",
+                      "primary": "#afc6ff",
+                      "surface-container-lowest": "#0e0e10",
+                      "primary-container": "#528dff",
+                      "surface-variant": "#353437",
+                      "on-surface-variant": "#c2c6d7",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#d0bcff",
+                      "primary-fixed": "#d9e2ff",
+                      "on-primary": "#002d6c",
+                      "on-secondary-fixed-variant": "#005236",
+                      "secondary-fixed": "#6ffbbe",
+                      "surface-container": "#201f21",
+                      "on-primary-fixed-variant": "#004398",
+                      "outline-variant": "#424754",
+                      "on-primary-fixed": "#001943"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sidebar_width": "280px",
+                      "margin_mobile": "16px",
+                      "margin_desktop": "40px",
+                      "gutter": "24px",
+                      "container_max": "1440px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "stat-xl": [
+                              "Sora"
+                      ],
+                      "headline-lg-mobile": [
+                              "Sora"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Sora"
+                      ],
+                      "headline-lg": [
+                              "Sora"
+                      ],
+                      "label-caps": [
+                              "Space Mono"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "stat-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .glass-panel {
+            background: rgba(19, 19, 21, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 15px rgba(208, 188, 255, 0.5);
+        }
+        .bg-void {
+            background: radial-gradient(circle at center, #1c1b1d 0%, #0a0a0c 100%);
+        }
+    </style>
+</head>
+<body class="bg-void text-on-surface min-h-screen flex items-center justify-center p-4">
+<!-- Auth Container -->
+<div class="w-full max-w-4xl grid md:grid-cols-2 gap-8 glass-panel rounded-xl overflow-hidden shadow-2xl relative">
+<!-- Left Side: Branding / Visuals -->
+<div class="hidden md:flex flex-col justify-center items-center p-12 relative overflow-hidden bg-surface-container-low/50">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay">
+<img alt="Awakening visual" class="w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="A highly detailed illustration of a muscular, shadowy figure standing atop a futuristic glowing ruin, exuding immense power. The scene is bathed in an ethereal, electric blue and shadow purple light, matching a cyber-RPG aesthetic. The atmosphere is tense and expectant, hinting at an impending awakening or a grueling trial. The style is heavily inspired by intense, high-stakes anime progression themes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA4B-jjLl2cjqzDeqptzRo2bYjns86_9Vt3bIvZ9q7Crr1ZCocv5ukHrU40L0A3Cz6-ukVI53NFA171HrHs4OY_M5sz_6YYqUYpsaP5myWvsN8bHGiTu2LR_badWJhAzgJGgcC-UzmcKFF2_vAHyuROAbv7RWckrUP6JTDQyDxMn5rOTb3AQQRATZoL5FWQWYcKBO_6NXEMzmlPJdG3O6KtHT1sjmx1_doP7g3ESLH8CUXpIb32zxqBw">
+</div>
+<!-- Branding -->
+<div class="relative z-10 text-center">
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-primary uppercase italic mb-4 tracking-tighter">FIT JOURNEY</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xs">
+                    Transform your physical limits into raw power. The system awaits your return.
+                </p>
+<div class="mt-12 flex justify-center space-x-2">
+<span class="block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="block w-2 h-2 rounded-full bg-primary/50"></span>
+<span class="block w-2 h-2 rounded-full bg-primary/20"></span>
+</div>
+</div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="p-8 md:p-12 flex flex-col justify-center relative z-10">
+<!-- Mobile Brand (Visible only on small screens) -->
+<div class="md:hidden text-center mb-8">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-extrabold text-primary uppercase italic tracking-tighter">FIT JOURNEY</h1>
+</div>
+<div class="mb-8">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Resume your training protocol</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Enter your credentials to access the Hunter network.</p>
+</div>
+<form class="space-y-6">
+<!-- Input: Email -->
+<div class="relative">
+<input class="peer w-full bg-white/5 border-0 border-b border-white/20 text-on-surface font-label-caps text-label-caps px-0 py-3 focus:ring-0 focus:border-primary transition-colors placeholder-transparent" id="email" placeholder="Hunter ID (Email)" required="" type="email">
+<label class="absolute left-0 top-3 text-on-surface-variant font-label-caps text-label-caps transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary" for="email">
+                        Hunter ID (Email)
+                    </label>
+</div>
+<!-- Input: Password -->
+<div class="relative">
+<input class="peer w-full bg-white/5 border-0 border-b border-white/20 text-on-surface font-label-caps text-label-caps px-0 py-3 focus:ring-0 focus:border-primary transition-colors placeholder-transparent" id="password" placeholder="Access Code" required="" type="password">
+<label class="absolute left-0 top-3 text-on-surface-variant font-label-caps text-label-caps transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary" for="password">
+                        Access Code
+                    </label>
+<button class="absolute right-0 top-3 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+<div class="flex items-center justify-between mt-4">
+<label class="flex items-center space-x-2 cursor-pointer">
+<input class="form-checkbox rounded bg-white/5 border-white/20 text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox">
+<span class="font-body-md text-sm text-on-surface-variant">Remember me</span>
+</label>
+<a class="font-body-md text-sm text-primary hover:text-primary-container transition-colors" href="#">Forgot Access Code?</a>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary text-on-primary font-label-caps text-label-caps py-4 rounded uppercase tracking-widest btn-glow transition-all duration-300 mt-8 font-bold" type="submit">
+                    Authenticate
+                </button>
+</form>
+<div class="mt-8">
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-white/10"></div>
+<span class="flex-shrink-0 mx-4 font-label-caps text-xs text-on-surface-variant uppercase tracking-widest">or link neural net</span>
+<div class="flex-grow border-t border-white/10"></div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-4">
+<button class="flex items-center justify-center space-x-2 bg-white/5 hover:bg-white/10 border border-white/10 py-3 rounded transition-colors" type="button">
+<span class="material-symbols-outlined text-on-surface-variant">language</span>
+<span class="font-label-caps text-xs text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center space-x-2 bg-white/5 hover:bg-white/10 border border-white/10 py-3 rounded transition-colors" type="button">
+<span class="material-symbols-outlined text-on-surface-variant">file_download</span>
+<span class="font-label-caps text-xs text-on-surface">Apple</span>
+</button>
+</div>
+</div>
+<p class="mt-8 text-center font-body-md text-sm text-on-surface-variant">
+                Unregistered anomaly? sign up</p>
+</div>
+</div>
+
+
+</body></html>

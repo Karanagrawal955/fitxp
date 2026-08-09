@@ -1,0 +1,563 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FitJourney - Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Sora:wght@400;600;700;800&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131315",
+                        "surface-bright": "#39393b",
+                        "error-container": "#93000a",
+                        "surface-variant": "#353437",
+                        "on-tertiary-fixed": "#23005c",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-surface": "#e5e1e4",
+                        "error": "#ffb4ab",
+                        "background": "#131315",
+                        "on-primary-fixed-variant": "#004398",
+                        "surface-container-highest": "#353437",
+                        "outline-variant": "#424754",
+                        "surface-container": "#201f21",
+                        "surface-container-high": "#2a2a2c",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "on-secondary-container": "#00311f",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "on-primary-container": "#00275f",
+                        "surface": "#131315",
+                        "on-error": "#690005",
+                        "inverse-primary": "#0059c7",
+                        "tertiary": "#d0bcff",
+                        "on-tertiary-container": "#340080",
+                        "tertiary-fixed": "#e9ddff",
+                        "surface-tint": "#afc6ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "primary-container": "#528dff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container-low": "#1c1b1d",
+                        "primary-fixed": "#d9e2ff",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-tertiary": "#3c0091",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#313032",
+                        "on-primary-fixed": "#001943",
+                        "tertiary-container": "#a078ff",
+                        "on-background": "#e5e1e4",
+                        "on-primary": "#002d6c",
+                        "on-surface-variant": "#c2c6d7",
+                        "on-secondary": "#003824",
+                        "outline": "#8c90a0",
+                        "inverse-surface": "#e5e1e4",
+                        "primary": "#afc6ff",
+                        "secondary": "#4edea3",
+                        "primary-fixed-dim": "#afc6ff",
+                        "secondary-container": "#00a572",
+                        "on-secondary-fixed-variant": "#005236"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar_width": "280px",
+                        "container_max": "1440px",
+                        "margin_mobile": "16px",
+                        "gutter": "24px",
+                        "margin_desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Sora"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-caps": ["Space Mono"],
+                        "headline-lg-mobile": ["Sora"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "stat-xl": ["Sora"],
+                        "headline-lg": ["Sora"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "stat-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    },
+                    backgroundImage: {
+                        'xp-gradient': 'linear-gradient(to right, #afc6ff, #d0bcff)',
+                        'tier-gradient': 'linear-gradient(135deg, #afc6ff 0%, #4edea3 100%)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-surface-container/40 backdrop-blur-xl border border-white/10;
+            }
+            .glass-card {
+                @apply bg-surface-container/60 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)];
+            }
+            .text-glow {
+                text-shadow: 0 0 10px rgba(175, 198, 255, 0.5);
+            }
+            .inner-glow {
+                box-shadow: inset 0 0 20px rgba(175, 198, 255, 0.1);
+            }
+            .border-glow-primary {
+                box-shadow: 0 0 15px rgba(175, 198, 255, 0.2);
+                border-color: rgba(175, 198, 255, 0.5);
+            }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}[type='text'],input:where(:not([type])),[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select{-webkit-appearance:none;appearance:none;background-color:#fff;border-color:#6b7280;border-width:1px;border-radius:0px;padding-top:0.5rem;padding-right:0.75rem;padding-bottom:0.5rem;padding-left:0.75rem;font-size:1rem;line-height:1.5rem;--tw-shadow:0 0 #0000;}[type='text']:focus, input:where(:not([type])):focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);border-color:#2563eb}input::placeholder,textarea::placeholder{color:#6b7280;opacity:1}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-date-and-time-value{min-height:1.5em;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field{padding-top:0;padding-bottom:0}select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");background-position:right 0.5rem center;background-repeat:no-repeat;background-size:1.5em 1.5em;padding-right:2.5rem;print-color-adjust:exact}[multiple],[size]:where(select:not([size="1"])){background-image:initial;background-position:initial;background-repeat:unset;background-size:initial;padding-right:0.75rem;print-color-adjust:unset}[type='checkbox'],[type='radio']{-webkit-appearance:none;appearance:none;padding:0;print-color-adjust:exact;display:inline-block;vertical-align:middle;background-origin:border-box;-webkit-user-select:none;user-select:none;flex-shrink:0;height:1rem;width:1rem;color:#2563eb;background-color:#fff;border-color:#6b7280;border-width:1px;--tw-shadow:0 0 #0000}[type='checkbox']{border-radius:0px}[type='radio']{border-radius:100%}[type='checkbox']:focus,[type='radio']:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:2px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}[type='checkbox']:checked,[type='radio']:checked{border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat}[type='checkbox']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='checkbox']:checked{-webkit-appearance:auto;appearance:auto}}[type='radio']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='radio']:checked{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:checked:hover,[type='checkbox']:checked:focus,[type='radio']:checked:hover,[type='radio']:checked:focus{border-color:transparent;background-color:currentColor}[type='checkbox']:indeterminate{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat;}@media (forced-colors: active) {[type='checkbox']:indeterminate{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:indeterminate:hover,[type='checkbox']:indeterminate:focus{border-color:transparent;background-color:currentColor}[type='file']{background:unset;border-color:inherit;border-width:0;border-radius:0;padding:0;font-size:unset;line-height:inherit}[type='file']:focus{outline:1px solid ButtonText;outline:1px auto -webkit-focus-ring-color}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.inset-y-0{top:0px;bottom:0px}.-bottom-4{bottom:-1rem}.-left-10{left:-2.5rem}.-right-20{right:-5rem}.-right-4{right:-1rem}.-top-10{top:-2.5rem}.-top-20{top:-5rem}.-top-6{top:-1.5rem}.bottom-0{bottom:0px}.bottom-\[-20\%\]{bottom:-20%}.left-0{left:0px}.left-1\/2{left:50%}.left-3{left:0.75rem}.left-\[-10\%\]{left:-10%}.right-0{right:0px}.right-2{right:0.5rem}.right-\[-10\%\]{right:-10%}.top-0{top:0px}.top-1\/2{top:50%}.top-1\/4{top:25%}.top-2{top:0.5rem}.top-2\/4{top:50%}.top-3\/4{top:75%}.top-\[-20\%\]{top:-20%}.z-10{z-index:10}.z-30{z-index:30}.z-40{z-index:40}.z-50{z-index:50}.z-\[-1\]{z-index:-1}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:0.5rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-auto{margin-top:auto}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-0{height:0px}.h-1{height:0.25rem}.h-10{height:2.5rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-24{height:6rem}.h-32{height:8rem}.h-48{height:12rem}.h-6{height:1.5rem}.h-64{height:16rem}.h-8{height:2rem}.h-\[15\%\]{height:15%}.h-\[40\%\]{height:40%}.h-\[45\%\]{height:45%}.h-\[50\%\]{height:50%}.h-\[55\%\]{height:55%}.h-\[65\%\]{height:65%}.h-\[75\%\]{height:75%}.h-\[90\%\]{height:90%}.h-full{height:100%}.min-h-\[1024px\]{min-height:1024px}.w-1{width:0.25rem}.w-10{width:2.5rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-16{width:4rem}.w-2{width:0.5rem}.w-2\/3{width:66.666667%}.w-24{width:6rem}.w-32{width:8rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-8{width:2rem}.w-\[34\%\]{width:34%}.w-\[40\%\]{width:40%}.w-\[50\%\]{width:50%}.w-\[86\%\]{width:86%}.w-\[calc\(100\%-280px\)\]{width:calc(100% - 280px)}.w-full{width:100%}.w-sidebar_width{width:280px}.max-w-\[40px\]{max-width:40px}.max-w-container_max{max-width:1440px}.max-w-md{max-width:28rem}.max-w-xl{max-width:36rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-x-1\/4{--tw-translate-x:25%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.auto-rows-\[minmax\(180px\2c auto\)\]{grid-auto-rows:minmax(180px,auto)}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-around{justify-content:space-around}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.overflow-hidden{overflow:hidden}.overflow-x-hidden{overflow-x:hidden}.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:0.125rem}.rounded-full{border-radius:0.75rem}.rounded-lg{border-radius:0.25rem}.rounded-xl{border-radius:0.5rem}.rounded-l-lg{border-top-left-radius:0.25rem;border-bottom-left-radius:0.25rem}.rounded-t-lg{border-top-left-radius:0.25rem;border-top-right-radius:0.25rem}.rounded-t-sm{border-top-left-radius:0.125rem;border-top-right-radius:0.125rem}.border{border-width:1px}.border-2{border-width:2px}.border-4{border-width:4px}.border-b{border-bottom-width:1px}.border-l{border-left-width:1px}.border-r{border-right-width:1px}.border-r-2{border-right-width:2px}.border-t{border-top-width:1px}.border-t-2{border-top-width:2px}.border-none{border-style:none}.border-error\/20{border-color:rgb(255 180 171 / 0.2)}.border-error\/70{border-color:rgb(255 180 171 / 0.7)}.border-outline{--tw-border-opacity:1;border-color:rgb(140 144 160 / var(--tw-border-opacity, 1))}.border-outline\/30{border-color:rgb(140 144 160 / 0.3)}.border-primary{--tw-border-opacity:1;border-color:rgb(175 198 255 / var(--tw-border-opacity, 1))}.border-primary\/20{border-color:rgb(175 198 255 / 0.2)}.border-primary\/30{border-color:rgb(175 198 255 / 0.3)}.border-primary\/50{border-color:rgb(175 198 255 / 0.5)}.border-primary\/70{border-color:rgb(175 198 255 / 0.7)}.border-secondary{--tw-border-opacity:1;border-color:rgb(78 222 163 / var(--tw-border-opacity, 1))}.border-secondary\/20{border-color:rgb(78 222 163 / 0.2)}.border-secondary\/30{border-color:rgb(78 222 163 / 0.3)}.border-secondary\/70{border-color:rgb(78 222 163 / 0.7)}.border-surface{--tw-border-opacity:1;border-color:rgb(19 19 21 / var(--tw-border-opacity, 1))}.border-tertiary\/30{border-color:rgb(208 188 255 / 0.3)}.border-tertiary\/50{border-color:rgb(208 188 255 / 0.5)}.border-transparent{border-color:transparent}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.bg-error{--tw-bg-opacity:1;background-color:rgb(255 180 171 / var(--tw-bg-opacity, 1))}.bg-error\/10{background-color:rgb(255 180 171 / 0.1)}.bg-error\/30{background-color:rgb(255 180 171 / 0.3)}.bg-error\/5{background-color:rgb(255 180 171 / 0.05)}.bg-primary{--tw-bg-opacity:1;background-color:rgb(175 198 255 / var(--tw-bg-opacity, 1))}.bg-primary\/10{background-color:rgb(175 198 255 / 0.1)}.bg-primary\/20{background-color:rgb(175 198 255 / 0.2)}.bg-primary\/30{background-color:rgb(175 198 255 / 0.3)}.bg-primary\/5{background-color:rgb(175 198 255 / 0.05)}.bg-secondary\/10{background-color:rgb(78 222 163 / 0.1)}.bg-secondary\/20{background-color:rgb(78 222 163 / 0.2)}.bg-secondary\/30{background-color:rgb(78 222 163 / 0.3)}.bg-surface{--tw-bg-opacity:1;background-color:rgb(19 19 21 / var(--tw-bg-opacity, 1))}.bg-surface-container{--tw-bg-opacity:1;background-color:rgb(32 31 33 / var(--tw-bg-opacity, 1))}.bg-surface-container-high{--tw-bg-opacity:1;background-color:rgb(42 42 44 / var(--tw-bg-opacity, 1))}.bg-surface-container-high\/50{background-color:rgb(42 42 44 / 0.5)}.bg-surface-container-highest{--tw-bg-opacity:1;background-color:rgb(53 52 55 / var(--tw-bg-opacity, 1))}.bg-surface-container-highest\/30{background-color:rgb(53 52 55 / 0.3)}.bg-surface-container\/40{background-color:rgb(32 31 33 / 0.4)}.bg-surface-container\/50{background-color:rgb(32 31 33 / 0.5)}.bg-surface-dim\/40{background-color:rgb(19 19 21 / 0.4)}.bg-surface-dim\/80{background-color:rgb(19 19 21 / 0.8)}.bg-surface-dim\/90{background-color:rgb(19 19 21 / 0.9)}.bg-tertiary\/20{background-color:rgb(208 188 255 / 0.2)}.bg-tertiary\/5{background-color:rgb(208 188 255 / 0.05)}.bg-transparent{background-color:transparent}.bg-white\/20{background-color:rgb(255 255 255 / 0.2)}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-xp-gradient{background-image:linear-gradient(to right, #afc6ff, #d0bcff)}.from-secondary\/20{--tw-gradient-from:rgb(78 222 163 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(78 222 163 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-tertiary\/20{--tw-gradient-from:rgb(208 188 255 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(208 188 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-secondary\/5{--tw-gradient-to:rgb(78 222 163 / 0.05) var(--tw-gradient-to-position)}.to-tertiary\/5{--tw-gradient-to:rgb(208 188 255 / 0.05) var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-3{padding:0.75rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-margin_desktop{padding-left:40px;padding-right:40px}.px-margin_mobile{padding-left:16px;padding-right:16px}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-2{padding-bottom:0.5rem}.pb-24{padding-bottom:6rem}.pb-4{padding-bottom:1rem}.pb-8{padding-bottom:2rem}.pl-10{padding-left:2.5rem}.pl-2{padding-left:0.5rem}.pr-4{padding-right:1rem}.pt-0{padding-top:0px}.pt-10{padding-top:2.5rem}.pt-4{padding-top:1rem}.font-body-md{font-family:Hanken Grotesk}.font-headline-lg-mobile{font-family:Sora}.font-headline-md{font-family:Sora}.font-label-caps{font-family:Space Mono}.font-stat-xl{font-family:Sora}.text-\[10px\]{font-size:10px}.text-\[14px\]{font-size:14px}.text-\[16px\]{font-size:16px}.text-\[18px\]{font-size:18px}.text-\[20px\]{font-size:20px}.text-\[24px\]{font-size:24px}.text-\[28px\]{font-size:28px}.text-\[36px\]{font-size:36px}.text-\[9px\]{font-size:9px}.text-body-md{font-size:16px;line-height:1.5;font-weight:400}.text-headline-lg-mobile{font-size:28px;line-height:1.2;font-weight:700}.text-headline-md{font-size:24px;line-height:1.3;font-weight:600}.text-label-caps{font-size:12px;line-height:1;letter-spacing:0.1em;font-weight:700}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.uppercase{text-transform:uppercase}.tracking-widest{letter-spacing:0.1em}.text-error{--tw-text-opacity:1;color:rgb(255 180 171 / var(--tw-text-opacity, 1))}.text-on-primary{--tw-text-opacity:1;color:rgb(0 45 108 / var(--tw-text-opacity, 1))}.text-on-surface{--tw-text-opacity:1;color:rgb(229 225 228 / var(--tw-text-opacity, 1))}.text-on-surface-variant{--tw-text-opacity:1;color:rgb(194 198 215 / var(--tw-text-opacity, 1))}.text-outline{--tw-text-opacity:1;color:rgb(140 144 160 / var(--tw-text-opacity, 1))}.text-primary{--tw-text-opacity:1;color:rgb(175 198 255 / var(--tw-text-opacity, 1))}.text-primary\/5{color:rgb(175 198 255 / 0.05)}.text-secondary{--tw-text-opacity:1;color:rgb(78 222 163 / var(--tw-text-opacity, 1))}.text-tertiary{--tw-text-opacity:1;color:rgb(208 188 255 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.line-through{-webkit-text-decoration-line:line-through;text-decoration-line:line-through}.decoration-outline{-webkit-text-decoration-color:#8c90a0;text-decoration-color:#8c90a0}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-0{opacity:0}.opacity-60{opacity:0.6}.shadow-\[0_0_15px_rgba\(255\2c 180\2c 171\2c 0\.2\)\]{--tw-shadow:0 0 15px rgba(255,180,171,0.2);--tw-shadow-colored:0 0 15px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[0_0_20px_rgba\(175\2c 198\2c 255\2c 0\.4\)\]{--tw-shadow:0 0 20px rgba(175,198,255,0.4);--tw-shadow-colored:0 0 20px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-inset{--tw-ring-inset:inset}.ring-primary\/30{--tw-ring-color:rgb(175 198 255 / 0.3)}.blur-2xl{--tw-blur:blur(40px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.blur-3xl{--tw-blur:blur(64px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.blur-\[150px\]{--tw-blur:blur(150px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.blur-xl{--tw-blur:blur(24px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow-\[0_0_8px_rgba\(175\2c 198\2c 255\2c 0\.6\)\]{--tw-drop-shadow:drop-shadow(0 0 8px rgba(175,198,255,0.6));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-lg{--tw-backdrop-blur:blur(16px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-150{transition-duration:150ms}.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}.glass-card{border-width:1px;border-color:rgb(255 255 255 / 0.1);background-color:rgb(32 31 33 / 0.6);--tw-shadow:inset 0 1px 1px rgba(255,255,255,0.05);--tw-shadow-colored:inset 0 1px 1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);--tw-backdrop-blur:blur(40px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.text-glow {
+                text-shadow: 0 0 10px rgba(175, 198, 255, 0.5);
+            }.inner-glow {
+                box-shadow: inset 0 0 20px rgba(175, 198, 255, 0.1);
+            }
+        .placeholder\:text-outline::placeholder{--tw-text-opacity:1;color:rgb(140 144 160 / var(--tw-text-opacity, 1))}
+        .hover\:border-error\/30:hover{border-color:rgb(255 180 171 / 0.3)}
+        .hover\:border-primary\/30:hover{border-color:rgb(175 198 255 / 0.3)}
+        .hover\:border-secondary\/30:hover{border-color:rgb(78 222 163 / 0.3)}
+        .hover\:border-tertiary\/30:hover{border-color:rgb(208 188 255 / 0.3)}
+        .hover\:border-white\/30:hover{border-color:rgb(255 255 255 / 0.3)}
+        .hover\:bg-error\/50:hover{background-color:rgb(255 180 171 / 0.5)}
+        .hover\:bg-primary\/40:hover{background-color:rgb(175 198 255 / 0.4)}
+        .hover\:bg-primary\/50:hover{background-color:rgb(175 198 255 / 0.5)}
+        .hover\:bg-secondary\/50:hover{background-color:rgb(78 222 163 / 0.5)}
+        .hover\:bg-surface-container-high:hover{--tw-bg-opacity:1;background-color:rgb(42 42 44 / var(--tw-bg-opacity, 1))}
+        .hover\:bg-tertiary\/40:hover{background-color:rgb(208 188 255 / 0.4)}
+        .hover\:bg-white\/5:hover{background-color:rgb(255 255 255 / 0.05)}
+        .hover\:text-on-surface:hover{--tw-text-opacity:1;color:rgb(229 225 228 / var(--tw-text-opacity, 1))}
+        .hover\:text-primary:hover{--tw-text-opacity:1;color:rgb(175 198 255 / var(--tw-text-opacity, 1))}
+        .hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}
+        .focus\:border-primary:focus{--tw-border-opacity:1;border-color:rgb(175 198 255 / var(--tw-border-opacity, 1))}
+        .focus\:bg-surface-container:focus{--tw-bg-opacity:1;background-color:rgb(32 31 33 / var(--tw-bg-opacity, 1))}
+        .focus\:ring-0:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}
+        .active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}
+        .active\:opacity-80:active{opacity:0.8}
+        .group:hover .group-hover\:scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}
+        .group:hover .group-hover\:border-outline{--tw-border-opacity:1;border-color:rgb(140 144 160 / var(--tw-border-opacity, 1))}
+        .group:hover .group-hover\:border-primary{--tw-border-opacity:1;border-color:rgb(175 198 255 / var(--tw-border-opacity, 1))}
+        .group:hover .group-hover\:bg-error\/10{background-color:rgb(255 180 171 / 0.1)}
+        .group:hover .group-hover\:bg-primary\/20{background-color:rgb(175 198 255 / 0.2)}
+        .group:hover .group-hover\:text-outline{--tw-text-opacity:1;color:rgb(140 144 160 / var(--tw-text-opacity, 1))}
+        .group:hover .group-hover\:text-primary{--tw-text-opacity:1;color:rgb(175 198 255 / var(--tw-text-opacity, 1))}
+        .group:hover .group-hover\:opacity-100{opacity:1}
+        .group:hover .group-hover\:opacity-50{opacity:0.5}
+        @media (min-width: 640px){.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:gap-4{gap:1rem}.sm\:px-8{padding-left:2rem;padding-right:2rem}}
+        @media (min-width: 768px){.md\:col-span-12{grid-column:span 12 / span 12}.md\:col-span-4{grid-column:span 4 / span 4}.md\:col-span-5{grid-column:span 5 / span 5}.md\:col-span-7{grid-column:span 7 / span 7}.md\:col-span-8{grid-column:span 8 / span 8}.md\:ml-sidebar_width{margin-left:280px}.md\:block{display:block}.md\:flex{display:flex}.md\:hidden{display:none}.md\:min-w-\[320px\]{min-width:320px}.md\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-end{align-items:flex-end}.md\:gap-10{gap:2.5rem}.md\:px-margin_desktop{padding-left:40px;padding-right:40px}.md\:pb-12{padding-bottom:3rem}.md\:pt-16{padding-top:4rem}.md\:font-headline-lg{font-family:Sora}.md\:text-headline-lg{font-size:32px;line-height:1.2;font-weight:700}}
+    </style></head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased overflow-x-hidden min-h-[1024px]" data-stitch-vh="min-h-[1024px]===min-h-screen" data-mode="connect">
+<!-- Ambient Background Blur -->
+<div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[150px]"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-tertiary/5 blur-[150px]"></div>
+</div>
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col p-6 bg-surface-container/40 backdrop-blur-xl border-r border-white/10 fixed left-0 top-0 h-full w-sidebar_width z-40 flat no shadows">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high overflow-hidden border border-white/10 shrink-0 relative group">
+<img alt="Hunter Avatar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="A futuristic, cyberpunk-style avatar of a glowing blue digital hunter with sharp angular features against a dark void background, matching the Solo Leveling aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlTwruwwl9DDR_NDLt-XgvrXh06rPMD4mV58ke-8qXwXePL8K60Liq0_b5LzTVFQH_Rx80AjO_Doi9o-IaybWnXdWZn78qZ6bfPTtOsZaxHtWSG_cMX9fCSltLmZJy1Fitu6Uiiz1D95NmKUin7Ik1fizkf9EKM8cxX_lcWazywMnEoXa8Iw0ohoxt__y-6BOJEwgq0_-5sZmOG2Lr_-Qj2Gib0t2c5xlpOPk7rksFuEZo6CTxxyVswg">
+<div class="absolute inset-0 ring-1 ring-inset ring-primary/30 rounded-xl"></div>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary text-glow">FitJourney</h1>
+<p class="font-label-caps text-label-caps text-secondary mt-1">Rank S Hunter</p>
+</div>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<!-- Active Tab -->
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-primary font-bold border-r-2 border-primary bg-primary/10 inner-glow transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<!-- Inactive Tabs -->
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">fitness_center</span>
+                    Workouts
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+                    Nutrition
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">insights</span>
+                    Progress
+                </a>
+</li>
+
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+                    Achievements
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+                    Challenges
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+                    Leaderboard
+                </a>
+</li>
+</ul>
+<div class="mt-auto pt-4 border-t border-white/5 flex flex-col gap-2">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+                Profile
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</div>
+</nav>
+<!-- TopAppBar (Desktop) -->
+<header class="hidden md:flex justify-between items-center px-margin_desktop bg-surface-dim/40 backdrop-blur-lg fixed top-0 right-0 w-[calc(100%-280px)] h-16 border-b border-white/10 z-30 flat no shadows">
+<div class="flex-1 max-w-md relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container/50 border-none border-b border-white/10 rounded-t-lg pl-10 pr-4 py-2 text-on-surface placeholder:text-outline font-label-caps text-label-caps focus:ring-0 focus:border-primary focus:bg-surface-container transition-colors" placeholder="Search Quests, Workouts..." type="text">
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-all hover:bg-white/5 relative active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error border border-surface"></span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-white/20 ml-2">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A small circular avatar showing a mysterious hunter character in dark armor with neon blue accents, matching the futuristic RPG aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyHjkhnmvD52E4iJt1kXV2AAfjyN50KRz_DGyksa7kbxdXnBtwH9Iv5XRHapnIMOykQmf1nQd2Dbfv-lYjssFcXf2pZH8fthVTrEZpynIEbM8Kbsp0wI5UBmXm7dJJ9kP24IVikRzskSLdYD1ctyg9ZqTGhcZX4UpYVs-buxY-uPijwld67qC7b0wuEngfMEsBXIRpZ5dk_IIH8zJA_U7NhjVwdHf9ujaOAdZjN_JcdI7ncWtaGvzlzA">
+</div>
+</div>
+</header>
+<!-- Mobile Top Header (Fallback) -->
+<header class="md:hidden flex justify-between items-center px-margin_mobile h-16 bg-surface-dim/80 backdrop-blur-lg border-b border-white/10 sticky top-0 z-30">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary text-glow">FitJourney</h1>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant relative">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="md:ml-sidebar_width pt-0 md:pt-16 min-h-[1024px] px-margin_mobile md:px-margin_desktop py-8 max-w-container_max mx-auto flex flex-col gap-8 md:gap-10 pb-24 md:pb-12" data-stitch-vh="min-h-[1024px]===min-h-screen">
+<!-- Section 1: Welcome Header & Status -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6 relative">
+<!-- Decorative Hexagon -->
+<div class="absolute -top-10 -left-10 text-primary/5 pointer-events-none md:block hidden">
+<svg fill="currentColor" height="200" viewBox="0 0 100 100" width="200"><polygon points="50 1 95 25 95 75 50 99 5 75 5 25"></polygon></svg>
+</div>
+<div class="flex-1 z-10">
+<p class="font-label-caps text-label-caps text-outline mb-2 tracking-widest uppercase">System Initialized</p>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-1">Welcome back, <span class="text-primary text-glow"></span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">Your attributes have stabilized. Daily quests have been updated. Prepare for the next trial.</p>
+</div>
+<div class="glass-card rounded-xl p-5 md:min-w-[320px] flex items-center gap-4 relative overflow-hidden group">
+<!-- Rank Hexagon -->
+<div class="w-16 h-16 shrink-0 relative flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full text-primary drop-shadow-[0_0_8px_rgba(175,198,255,0.6)]" fill="none" stroke="currentColor" stroke-width="4" viewBox="0 0 100 100">
+<polygon fill="rgba(175, 198, 255, 0.1)" points="50 5 90 27 90 73 50 95 10 73 10 27"></polygon>
+</svg>
+<span class="font-stat-xl text-[24px] font-bold text-primary relative z-10">S</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-label-caps text-label-caps text-primary uppercase">Elite Tier</span>
+<span class="font-body-md text-body-md font-bold">Lvl 42</span>
+</div>
+<!-- XP Bar -->
+<div class="h-2 bg-surface-container-highest rounded-full overflow-hidden relative mt-2">
+<div class="absolute inset-y-0 left-0 bg-xp-gradient w-[86%] rounded-full relative">
+<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+</div>
+</div>
+<div class="flex justify-between items-center mt-1">
+<span class="font-label-caps text-[10px] text-outline">XP Progress</span>
+<span class="font-label-caps text-[10px] text-primary">860 / 1000</span>
+</div>
+</div>
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/4 group-hover:bg-primary/20 transition-colors duration-500"></div>
+</div>
+</section>
+<!-- Bento Grid Layout for Dashboard Metrics & Activities -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(180px,auto)]">
+<!-- Section 2: Daily Performance Overview (Stats Cards) -->
+<div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+<!-- Calories -->
+<div class="glass-card rounded-xl p-5 flex flex-col justify-between relative overflow-hidden group hover:border-error/30 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-lg bg-error/10 flex items-center justify-center text-error border border-error/20">
+<span class="material-symbols-outlined">local_fire_department</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline bg-surface-container px-2 py-1 rounded">Daily</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-outline mb-1">Energy Burned</p>
+<div class="flex items-baseline gap-2">
+<span class="font-stat-xl text-[36px] text-on-surface">2.4k</span>
+<span class="font-body-md text-error">kcal</span>
+</div>
+</div>
+<!-- Decorative background element -->
+<div class="absolute -bottom-4 -right-4 w-24 h-24 bg-error/5 rounded-full blur-xl group-hover:bg-error/10 transition-colors"></div>
+</div>
+<!-- Water -->
+<div class="glass-card rounded-xl p-5 flex flex-col justify-between relative overflow-hidden group hover:border-primary/30 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary bg-primary/10 px-2 py-1 rounded">In Progress</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-outline mb-1">Mana Replenishment</p>
+<div class="flex items-baseline gap-2">
+<span class="font-stat-xl text-[36px] text-on-surface">1.2</span>
+<span class="font-body-md text-outline">/ 3.5 L</span>
+</div>
+<!-- Mini progress bar -->
+<div class="h-1 bg-surface-container-highest rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-primary w-[34%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Weight -->
+<div class="glass-card rounded-xl p-5 flex flex-col justify-between relative overflow-hidden group hover:border-secondary/30 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary border border-secondary/20">
+<span class="material-symbols-outlined">monitor_weight</span>
+</div>
+<div class="flex items-center gap-1 text-secondary bg-secondary/10 px-2 py-1 rounded font-label-caps text-[10px]">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+                            0.5 kg
+                        </div>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-outline mb-1">Physical Mass</p>
+<div class="flex items-baseline gap-2">
+<span class="font-stat-xl text-[36px] text-on-surface">76.5</span>
+<span class="font-body-md text-secondary">kg</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 6: Recent Milestones -->
+<div class="md:col-span-4 glass-card rounded-xl p-5 flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-[18px] font-bold text-on-surface">Recent Trophies</h3>
+<a class="text-primary text-sm hover:underline font-label-caps text-label-caps" href="#">View All</a>
+</div>
+<div class="flex-1 flex flex-col gap-3 justify-center">
+<div class="flex items-center gap-4 p-3 rounded-lg bg-surface-container-high/50 border border-white/5 hover:border-tertiary/30 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-gradient-to-br from-tertiary/20 to-tertiary/5 border border-tertiary/30 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">swords</span>
+</div>
+<div>
+<p class="font-body-md text-[14px] font-bold text-on-surface">Iron Will Awakened</p>
+<p class="font-label-caps text-[10px] text-outline mt-1">7 Day Streak</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-surface-container-high/50 border border-white/5 hover:border-secondary/30 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-gradient-to-br from-secondary/20 to-secondary/5 border border-secondary/30 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+</div>
+<div>
+<p class="font-body-md text-[14px] font-bold text-on-surface">Shadow Swiftness</p>
+<p class="font-label-caps text-[10px] text-outline mt-1">5km Run &lt; 25m</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 5: Featured Workout (Large Card) -->
+<section class="md:col-span-7 glass-card rounded-xl p-6 relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-[20px] font-bold text-on-surface uppercase">STAT TRENDS</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1 rounded bg-primary/20 text-primary border border-primary/30 font-label-caps text-[10px]">WEIGHT</button>
+<button class="px-3 py-1 rounded bg-transparent text-outline border border-white/10 hover:bg-white/5 font-label-caps text-[10px] transition-colors">BODY FAT %</button>
+<button class="px-3 py-1 rounded bg-transparent text-outline border border-white/10 hover:bg-white/5 font-label-caps text-[10px] transition-colors">MUSCLE MASS</button>
+</div>
+</div>
+<div class="h-64 w-full relative flex items-end justify-between pt-10 border-b border-l border-white/10 pb-2 pl-2">
+<div class="absolute inset-0 border-b border-white/5 top-1/4"></div>
+<div class="absolute inset-0 border-b border-white/5 top-2/4"></div>
+<div class="absolute inset-0 border-b border-white/5 top-3/4"></div>
+<svg class="absolute inset-0 h-full w-full" preserveAspectRatio="none">
+<defs>
+<linearGradient id="lineGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#afc6ff" stop-opacity="0.5"></stop>
+<stop offset="100%" stop-color="#afc6ff" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<path class="drop-shadow-[0_0_8px_rgba(175,198,255,0.6)]" d="M0,200 L100,180 L200,210 L300,150 L400,160 L500,100 L600,120 L700,50 L800,80" fill="none" stroke="#afc6ff" stroke-width="3"></path>
+<path d="M0,200 L100,180 L200,210 L300,150 L400,160 L500,100 L600,120 L700,50 L800,80 L800,250 L0,250 Z" fill="url(#lineGrad)"></path>
+</svg>
+</div>
+<div class="flex justify-between text-[10px] font-label-caps text-outline mt-2 pl-2">
+<span class="">JAN</span><span class="">FEB</span><span class="">MAR</span><span class="">APR</span><span class="">MAY</span><span class="">JUN</span>
+</div>
+</section>
+<!-- Section 4: Active Challenges (Quest Log) -->
+<div class="md:col-span-5 glass-card rounded-xl p-6 flex flex-col">
+<div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">assignment</span>
+<h3 class="font-headline-md text-[20px] font-bold text-on-surface">Daily Quests</h3>
+</div>
+<span class="font-label-caps text-label-caps text-primary bg-primary/10 px-2 py-1 rounded">1 / 3 Completed</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Quest 1 (Completed) -->
+<div class="flex items-start gap-4 p-3 rounded-lg bg-surface-container-highest/30 border border-white/5 opacity-60">
+<div class="mt-1 w-6 h-6 rounded-full bg-secondary/20 border border-secondary text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<p class="font-body-md text-[16px] font-medium text-on-surface line-through decoration-outline">Sleep 8 Hours</p>
+<p class="font-label-caps text-[10px] text-secondary mt-1">Reward: +50 XP Collected</p>
+</div>
+</div>
+<!-- Quest 2 (Active) -->
+<div class="flex items-start gap-4 p-3 rounded-lg bg-surface-container/50 border border-primary/30 inner-glow relative group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-lg"></div>
+<div class="mt-1 w-6 h-6 rounded-full border-2 border-outline text-transparent flex items-center justify-center shrink-0 group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 group-hover:text-primary transition-opacity">check</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-[16px] font-medium text-on-surface">Drink 3L Water</p>
+<div class="h-1 bg-surface-container-highest rounded-full mt-2 overflow-hidden w-2/3">
+<div class="h-full bg-primary w-[40%] rounded-full"></div>
+</div>
+<p class="font-label-caps text-[10px] text-primary mt-2">Reward: +20 XP</p>
+</div>
+</div>
+<!-- Quest 3 (Active) -->
+<div class="flex items-start gap-4 p-3 rounded-lg bg-surface-container/50 border border-white/10 hover:border-white/30 transition-colors cursor-pointer group">
+<div class="mt-1 w-6 h-6 rounded-full border-2 border-outline text-transparent flex items-center justify-center shrink-0 group-hover:border-outline">
+<span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-50 group-hover:text-outline transition-opacity">check</span>
+</div>
+<div>
+<p class="font-body-md text-[16px] font-medium text-on-surface">Complete Daily Workout</p>
+<p class="font-label-caps text-[10px] text-primary mt-1">Reward: +100 XP</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Weekly Activity Chart -->
+<div class="md:col-span-12 glass-card rounded-xl p-6">
+<div class="flex justify-between items-end mb-8 border-b border-white/10 pb-4">
+<div>
+<h3 class="font-headline-md text-[20px] font-bold text-on-surface mb-1">Mana Output Analysis</h3>
+<p class="font-body-md text-[14px] text-outline">Workout intensity over the last 7 days</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 rounded bg-surface-container-high border border-white/10 text-on-surface font-label-caps text-label-caps hover:bg-white/5 transition-colors">Week</button>
+<button class="px-3 py-1 rounded bg-transparent border border-transparent text-outline font-label-caps text-label-caps hover:text-on-surface transition-colors">Month</button>
+</div>
+</div>
+<!-- CSS Only Bar Chart Representation -->
+<div class="h-48 flex items-end justify-between gap-2 sm:gap-4 px-2 sm:px-8 relative pt-4">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none pb-8">
+<div class="w-full border-t border-white/5 h-0"></div>
+<div class="w-full border-t border-white/5 h-0"></div>
+<div class="w-full border-t border-white/5 h-0"></div>
+<div class="w-full border-t border-white/10 h-0"></div>
+</div>
+<!-- Bars -->
+<div class="flex flex-col items-center gap-2 z-10 w-full group">
+<div class="w-full max-w-[40px] bg-primary/20 rounded-t-sm h-[40%] relative hover:bg-primary/40 transition-colors cursor-pointer border-t-2 border-primary/50">
+<!-- Tooltip on hover -->
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-container-high px-2 py-1 rounded text-xs font-label-caps text-on-surface opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">Low</div>
+</div>
+<span class="font-label-caps text-[10px] text-outline">Mon</span>
+</div>
+<div class="flex flex-col items-center gap-2 z-10 w-full group">
+<div class="w-full max-w-[40px] bg-tertiary/20 rounded-t-sm h-[65%] relative hover:bg-tertiary/40 transition-colors cursor-pointer border-t-2 border-tertiary/50">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-container-high px-2 py-1 rounded text-xs font-label-caps text-on-surface opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">Med</div>
+</div>
+<span class="font-label-caps text-[10px] text-outline">Tue</span>
+</div>
+<div class="flex flex-col items-center gap-2 z-10 w-full group">
+<div class="w-full max-w-[40px] bg-error/30 rounded-t-sm h-[90%] relative hover:bg-error/50 transition-colors cursor-pointer border-t-2 border-error/70 shadow-[0_0_15px_rgba(255,180,171,0.2)]">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-container-high px-2 py-1 rounded text-xs font-label-caps text-error opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">Peak</div>
+</div>
+<span class="font-label-caps text-[10px] text-on-surface font-bold">Wed</span>
+</div>
+<div class="flex flex-col items-center gap-2 z-10 w-full group">
+<div class="w-full max-w-[40px] bg-surface-container-highest rounded-t-sm h-[15%] relative hover:bg-surface-container-high transition-colors cursor-pointer border-t-2 border-outline/30">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-container-high px-2 py-1 rounded text-xs font-label-caps text-outline opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">Rest</div>
+</div>
+<span class="font-label-caps text-[10px] text-outline">Thu</span>
+</div>
+<div class="flex flex-col items-center gap-2 z-10 w-full group">
+<div class="w-full max-w-[40px] bg-primary/30 rounded-t-sm h-[75%] relative hover:bg-primary/50 transition-colors cursor-pointer border-t-2 border-primary/70">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-container-high px-2 py-1 rounded text-xs font-label-caps text-on-surface opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">High</div>
+</div>
+<span class="font-label-caps text-[10px] text-outline">Fri</span>
+</div>
+<div class="flex flex-col items-center gap-2 z-10 w-full group">
+<div class="w-full max-w-[40px] bg-primary/20 rounded-t-sm h-[45%] relative hover:bg-primary/40 transition-colors cursor-pointer border-t-2 border-primary/50">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-container-high px-2 py-1 rounded text-xs font-label-caps text-on-surface opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">Med</div>
+</div>
+<span class="font-label-caps text-[10px] text-outline">Sat</span>
+</div>
+<div class="flex flex-col items-center gap-2 z-10 w-full group">
+<div class="w-full max-w-[40px] bg-secondary/30 rounded-t-sm h-[55%] relative hover:bg-secondary/50 transition-colors cursor-pointer border-t-2 border-secondary/70">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-container-high px-2 py-1 rounded text-xs font-label-caps text-secondary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">Recovery</div>
+</div>
+<span class="font-label-caps text-[10px] text-outline">Sun</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Mobile Bottom Navigation (Visible only on md:hidden) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-dim/90 backdrop-blur-xl border-t border-white/10 z-50 pb-safe">
+<div class="flex justify-around items-center h-16 px-2">
+<a class="flex flex-col items-center justify-center w-full h-full text-primary gap-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-caps text-[9px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-outline hover:text-on-surface gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined">fitness_center</span>
+<span class="font-label-caps text-[9px]">Train</span>
+</a>
+<div class="relative w-full h-full flex justify-center">
+<button class="absolute -top-6 w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-[0_0_20px_rgba(175,198,255,0.4)] border-4 border-surface active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center w-full h-full text-outline hover:text-on-surface gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-label-caps text-[9px]">Quests</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-outline hover:text-on-surface gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-[9px]">Hunter</span>
+</a>
+</div>
+</nav>
+
+
+</body></html>

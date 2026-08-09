@@ -1,0 +1,162 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FitJourney - Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Sora:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#93000a",
+                    "tertiary-container": "#ca8100",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "primary-fixed-dim": "#afc6ff",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "tertiary": "#ffb95f",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-error": "#690005",
+                    "surface-container-highest": "#32353d",
+                    "on-primary": "#002d6c",
+                    "on-tertiary-container": "#3e2400",
+                    "primary-fixed": "#d9e2ff",
+                    "on-secondary-fixed": "#002113",
+                    "on-secondary-container": "#00311f",
+                    "surface-container-low": "#191b23",
+                    "inverse-on-surface": "#2d3039",
+                    "surface-variant": "#32353d",
+                    "background": "#10131b",
+                    "surface-container": "#1d1f27",
+                    "surface-container-lowest": "#0b0e15",
+                    "outline-variant": "#424754",
+                    "inverse-primary": "#0059c7",
+                    "on-secondary": "#003824",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-tertiary": "#472a00",
+                    "on-surface-variant": "#c2c6d7",
+                    "surface-dim": "#10131b",
+                    "primary-container": "#528dff",
+                    "on-tertiary-fixed": "#2a1700",
+                    "error": "#ffb4ab",
+                    "on-primary-container": "#00275f",
+                    "outline": "#8c90a0",
+                    "inverse-surface": "#e1e2ed",
+                    "primary": "#afc6ff",
+                    "surface-bright": "#363941",
+                    "on-primary-fixed": "#001943",
+                    "on-background": "#e1e2ed",
+                    "surface-tint": "#afc6ff",
+                    "tertiary-fixed": "#ffddb8",
+                    "secondary-container": "#00a572",
+                    "surface": "#10131b",
+                    "on-surface": "#e1e2ed",
+                    "secondary": "#4edea3",
+                    "secondary-fixed-dim": "#4edea3",
+                    "surface-container-high": "#272a32",
+                    "on-primary-fixed-variant": "#004398"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "lg": "40px",
+                    "margin-mobile": "16px",
+                    "xl": "64px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "gutter": "20px",
+                    "margin-desktop": "48px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Sora", "sans-serif"],
+                    "body-lg": ["Hanken Grotesk", "sans-serif"],
+                    "headline-lg": ["Sora", "sans-serif"],
+                    "headline-lg-mobile": ["Sora", "sans-serif"],
+                    "body-md": ["Hanken Grotesk", "sans-serif"],
+                    "stat-xl": ["Sora", "sans-serif"],
+                    "label-md": ["JetBrains Mono", "monospace"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "stat-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .loading-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, theme('colors.primary'), theme('colors.secondary'));
+            border-radius: 9999px;
+            animation: load 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            box-shadow: 0 0 10px theme('colors.primary');
+        }
+
+        @keyframes load {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+        
+        .glow-effect {
+            animation: pulse-glow 2s infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            0% { filter: drop-shadow(0 0 10px rgba(175, 198, 255, 0.3)); }
+            100% { filter: drop-shadow(0 0 25px rgba(175, 198, 255, 0.6)); }
+        }
+    </style>
+</head>
+<body class="bg-[#0F1115] text-on-background h-screen w-screen flex flex-col items-center justify-center m-0 overflow-hidden font-body-md antialiased">
+<main class="flex flex-col items-center justify-center flex-1 w-full max-w-sm px-margin-mobile z-10">
+<div class="mb-xl glow-effect">
+<img alt="FitJourney App Logo" class="w-48 h-48 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCt3zYSamWv7jK8XC_c1ENjJNCJ_kr4V6BcMBL5jKp7gS2VxYCVjGALxPq6msm91RjSArvkU2wxaCcoWpXo_2AQVWZTcnQWhHNP9y1Li9nmJtbbSXDELXdyI1MPJ0_hle-67DIVTRj1ZvKFqp5TQOD-UOQLjK7JX9BsRv-6RwZDsv7GO3VttW-WLNLtfObd25pHuKeQvb2sM3t77lqWOmSoiuRnurbiSosbbI0jsJdvz5qPPT7w6UKFA">
+</div>
+<div class="flex flex-col items-center gap-md">
+<div class="loading-bar">
+<div class="loading-progress"></div>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest opacity-80">
+                Track. Improve. Transform.
+            </p>
+</div>
+</main>
+<script>
+        // Simulated transition after loading
+        setTimeout(() => {
+            const body = document.querySelector('body');
+            body.style.transition = 'opacity 0.5s ease';
+            body.style.opacity = '0';
+        }, 2200);
+    </script>
+</body></html>

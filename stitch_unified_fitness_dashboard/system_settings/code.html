@@ -1,0 +1,297 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Settings - FitJourney</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Hanken+Grotesk:wght@400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#3c0091",
+                      "surface-dim": "#131315",
+                      "tertiary": "#d0bcff",
+                      "primary-fixed": "#d9e2ff",
+                      "surface-tint": "#afc6ff",
+                      "secondary-container": "#00a572",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed": "#002113",
+                      "secondary": "#4edea3",
+                      "on-tertiary-fixed": "#23005c",
+                      "on-background": "#e5e1e4",
+                      "primary": "#afc6ff",
+                      "on-primary-fixed": "#001943",
+                      "inverse-on-surface": "#313032",
+                      "on-primary-container": "#00275f",
+                      "surface-bright": "#39393b",
+                      "surface-container-low": "#1c1b1d",
+                      "error": "#ffb4ab",
+                      "primary-fixed-dim": "#afc6ff",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-error-container": "#ffdad6",
+                      "surface-container": "#201f21",
+                      "surface": "#131315",
+                      "on-tertiary-container": "#340080",
+                      "on-secondary": "#003824",
+                      "secondary-fixed": "#6ffbbe",
+                      "surface-variant": "#353437",
+                      "tertiary-fixed-dim": "#d0bcff",
+                      "on-primary": "#002d6c",
+                      "surface-container-highest": "#353437",
+                      "on-tertiary-fixed-variant": "#5516be",
+                      "on-secondary-container": "#00311f",
+                      "primary-container": "#528dff",
+                      "inverse-primary": "#0059c7",
+                      "surface-container-high": "#2a2a2c",
+                      "on-primary-fixed-variant": "#004398",
+                      "tertiary-fixed": "#e9ddff",
+                      "outline-variant": "#424754",
+                      "on-surface-variant": "#c2c6d7",
+                      "on-secondary-fixed-variant": "#005236",
+                      "tertiary-container": "#a078ff",
+                      "outline": "#8c90a0",
+                      "on-error": "#690005",
+                      "surface-container-lowest": "#0e0e10",
+                      "on-surface": "#e5e1e4",
+                      "background": "#131315",
+                      "inverse-surface": "#e5e1e4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container_max": "1440px",
+                      "margin_mobile": "16px",
+                      "margin_desktop": "40px",
+                      "gutter": "24px",
+                      "sidebar_width": "280px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Sora"
+                      ],
+                      "stat-xl": [
+                              "Sora"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "Space Mono"
+                      ],
+                      "headline-md": [
+                              "Sora"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Sora"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "stat-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #0a0a0c; /* Enforce deep void background */
+            color: #e5e1e4;
+        }
+        
+        /* Custom Switch Styling */
+        .cyber-switch input:checked ~ div {
+            background-color: theme('colors.primary');
+        }
+        .cyber-switch input:checked ~ div > div {
+            transform: translateX(100%);
+            border-color: theme('colors.primary');
+        }
+      </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen font-body-md selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar (Hidden on Mobile) -->
+<header class="hidden md:flex justify-between items-center h-16 px-margin_desktop ml-sidebar_width bg-surface/40 dark:bg-surface/40 backdrop-blur-xl fixed top-0 right-0 left-0 z-50 border-b border-white/10 shadow-sm">
+<div class="font-headline-md text-headline-md font-bold text-primary">FitJourney</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95 transition-transform" data-icon="notifications" style="font-variation-settings: 'FILL' 0;">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95 transition-transform" data-icon="bolt" style="font-variation-settings: 'FILL' 0;">bolt</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95 transition-transform" data-icon="account_circle" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</div>
+</header>
+<!-- SideNavBar (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col p-6 gap-2 bg-surface/60 dark:bg-surface/60 backdrop-blur-2xl fixed left-0 top-0 bottom-0 w-sidebar_width z-50 border-r border-white/10 shadow-2xl">
+<!-- Hunter Profile Header -->
+<div class="mb-8 flex flex-col items-center text-center">
+<div class="relative w-24 h-24 mb-4 rounded-full p-[2px] bg-gradient-to-br from-primary to-tertiary">
+<img class="w-full h-full rounded-full object-cover border-2 border-surface bg-surface" data-alt="A highly detailed close-up portrait avatar of a futuristic cyberpunk character in a sleek, glowing tech-suit. The background is a dark void with neon blue and purple reflections. The lighting is cinematic, casting dramatic shadows and highlighting the glowing elements of the suit. The style is 3d render, hyper-realistic, conveying a sense of elite status in a digital realm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAADT64cj-J0YtvdX5QcpwdR85U8m-E3nAqK0_4R7R12k84Ycjbcbhm4Lo0v7eTzXaQuXdjg7l6lJT_hSyPDiuFQtUUPjY4U9jIJb5LIWp_swLQ5l5ZAnmLAZJ93VH2x97SqPhVOqjRNHG5Sr8PDXbKq0prsRi3pk9rfsc2vjvGw8GFnqINe0xGJb0PnR0SW1ezGVZ-EpyNKoCjmi6Qc11YEofYQ0x0S5zk36lZxMe4sABBVlephW9NWQ">
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary tracking-tighter">Level 42 Hunter</h2>
+<p class="font-label-caps text-label-caps text-tertiary mt-1">Rank: Elite</p>
+<button class="mt-4 px-6 py-2 bg-primary text-on-primary font-bold rounded-lg hover:shadow-[0_0_15px_rgba(175,198,255,0.4)] transition-all">Start Quest</button>
+</div>
+<div class="flex flex-col gap-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/10 transition-all duration-200 hover:translate-x-1 rounded-xl group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/10 transition-all duration-200 hover:translate-x-1 rounded-xl group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="fitness_center">fitness_center</span>
+<span class="font-body-md text-body-md">Workouts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/10 transition-all duration-200 hover:translate-x-1 rounded-xl group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="restaurant">restaurant</span>
+<span class="font-body-md text-body-md">Nutrition</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/10 transition-all duration-200 hover:translate-x-1 rounded-xl group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="trending_up">trending_up</span>
+<span class="font-body-md text-body-md">Progress</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/10 transition-all duration-200 hover:translate-x-1 rounded-xl group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="emoji_events">emoji_events</span>
+<span class="font-body-md text-body-md">Achievements</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/10 transition-all duration-200 hover:translate-x-1 rounded-xl group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="military_tech">military_tech</span>
+<span class="font-body-md text-body-md">Challenges</span>
+</a>
+
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/10 transition-all duration-200 hover:translate-x-1 rounded-xl group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="person">person</span>
+<span class="font-body-md text-body-md">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-xl font-bold group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="md:ml-sidebar_width md:pt-16 min-h-screen pb-24 md:pb-8">
+<div class="max-w-[1000px] mx-auto px-margin_mobile md:px-gutter py-8">
+<header class="mb-10">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-on-surface mb-2">System Configuration</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Manage your Hunter profile, security protocols, and interface preferences.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column (Nav/Quick Links for Desktop) -->
+<div class="hidden lg:block lg:col-span-3">
+<div class="sticky top-24 bg-surface-container/40 backdrop-blur-xl border border-white/10 rounded-xl p-4">
+<ul class="space-y-2">
+<li class=""><a class="block py-2 px-3 rounded-lg bg-white/5 text-primary font-bold transition-colors" href="#security">Account Security</a></li>
+<li class=""><a class="block py-2 px-3 rounded-lg hover:bg-white/5 text-on-surface-variant hover:text-on-surface transition-colors" href="#profile">Profile Configuration</a></li>
+<li class=""><a class="block py-2 px-3 rounded-lg hover:bg-white/5 text-on-surface-variant hover:text-on-surface transition-colors" href="#preferences">System Preferences</a></li>
+<li class=""><a class="block py-2 px-3 rounded-lg hover:bg-white/5 text-on-surface-variant hover:text-on-surface transition-colors" href="#notifications">Notifications</a></li>
+</ul>
+</div>
+</div>
+<!-- Right Column (Settings Forms) -->
+<div class="lg:col-span-9 space-y-12">
+<!-- Account Security Section -->
+<section class="scroll-mt-24" id="security">
+<div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+<span class="material-symbols-outlined text-primary text-2xl">lock</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Account Security</h2>
+</div>
+<div class="bg-surface/40 backdrop-blur-xl border border-white/10 rounded-xl p-6 lg:p-8 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase tracking-widest">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full bg-surface-container-low border-b border-outline-variant text-on-surface px-10 py-3 font-body-md focus:border-primary focus:ring-0 transition-colors placeholder:text-outline placeholder:font-label-caps" readonly="" type="email" value="hunter.solo@leveling.net">
+</div>
+<p class="text-xs text-outline mt-1">Verified on 2023-10-15</p>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase tracking-widest">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">key</span>
+<input class="w-full bg-surface-container-low border-b border-outline-variant text-on-surface px-10 py-3 font-body-md focus:border-primary focus:ring-0 transition-colors" readonly="" type="password" value="********">
+</div>
+<button class="text-primary text-sm font-bold mt-2 hover:text-primary-fixed transition-colors">Update Password</button>
+</div>
+</div>
+<div class="pt-4 border-t border-white/5">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-bold text-on-surface text-lg">Two-Factor Authentication</h3>
+<p class="text-sm text-on-surface-variant mt-1">Add an extra layer of security to your Hunter Profile.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer cyber-switch">
+<input checked="" class="sr-only peer" type="checkbox" value="">
+<div class="w-14 h-7 bg-surface-container-highest rounded-full peer-focus:outline-none transition-colors border border-outline-variant">
+<div class="absolute top-1 left-1 bg-on-surface border border-outline-variant rounded-full h-5 w-5 transition-transform"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+
+
+</body></html>

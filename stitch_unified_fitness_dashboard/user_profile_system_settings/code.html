@@ -1,0 +1,437 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FIT JOURNEY - User Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Sora:wght@400;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#e5e1e4",
+                        "tertiary-container": "#a078ff",
+                        "primary-container": "#528dff",
+                        "primary": "#afc6ff",
+                        "primary-fixed-dim": "#afc6ff",
+                        "tertiary": "#d0bcff",
+                        "outline": "#8c90a0",
+                        "surface-tint": "#afc6ff",
+                        "on-secondary": "#003824",
+                        "surface-bright": "#39393b",
+                        "inverse-primary": "#0059c7",
+                        "on-primary-fixed-variant": "#004398",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "on-primary-container": "#00275f",
+                        "on-primary-fixed": "#001943",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container-highest": "#353437",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#131315",
+                        "on-tertiary": "#3c0091",
+                        "surface-variant": "#353437",
+                        "on-tertiary-fixed": "#23005c",
+                        "surface-container-high": "#2a2a2c",
+                        "on-background": "#e5e1e4",
+                        "outline-variant": "#424754",
+                        "surface-container-low": "#1c1b1d",
+                        "surface-container": "#201f21",
+                        "surface": "#131315",
+                        "on-primary": "#002d6c",
+                        "on-surface": "#e5e1e4",
+                        "primary-fixed": "#d9e2ff",
+                        "background": "#131315",
+                        "inverse-on-surface": "#313032",
+                        "on-secondary-container": "#00311f",
+                        "on-surface-variant": "#c2c6d7",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "secondary-fixed": "#6ffbbe",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-secondary-fixed": "#002113",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "secondary": "#4edea3",
+                        "secondary-container": "#00a572",
+                        "on-tertiary-container": "#340080"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "sidebar_width": "280px",
+                        "margin_desktop": "40px",
+                        "margin_mobile": "16px",
+                        "container_max": "1440px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "stat-xl": ["Sora"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Sora"],
+                        "label-caps": ["Space Mono"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Sora"],
+                        "headline-lg-mobile": ["Sora"]
+                    },
+                    fontSize: {
+                        "stat-xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "label-caps": ["12px", { lineHeight: "1", letterSpacing: "0.1em", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "1.2", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0a0a0c; color: #e5e1e4; overflow-x: hidden; }
+        .glass-panel { background: rgba(19, 19, 21, 0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card-active { background: rgba(19, 19, 21, 0.6); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid #afc6ff; }
+        .hex-badge { clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); background: linear-gradient(135deg, #afc6ff, #5516be); position: relative; }
+        .hex-badge::after { content: ''; position: absolute; inset: 2px; background: #131315; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); z-index: 0; }
+        .hex-content { position: relative; z-index: 1; }
+        .aura-glow-s { box-shadow: 0 0 20px rgba(175, 198, 255, 0.5), inset 0 0 10px rgba(175, 198, 255, 0.5); }
+        
+        .xp-bar-bg { background: rgba(255, 255, 255, 0.1); }
+        .xp-bar-fill { background: linear-gradient(90deg, #528dff, #a078ff); transition: width 1s ease-in-out; }
+        
+        .glow-text { text-shadow: 0 0 10px rgba(175, 198, 255, 0.5); }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0c; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
+        .heat-map-cell { transition: all 0.2s ease; }
+        .heat-map-cell:hover { transform: scale(1.2); z-index: 10; box-shadow: 0 0 8px #afc6ff; }
+        .heat-lvl-0 { background: rgba(255,255,255,0.05); }
+        .heat-lvl-1 { background: rgba(82, 141, 255, 0.3); }
+        .heat-lvl-2 { background: rgba(82, 141, 255, 0.6); }
+        .heat-lvl-3 { background: #528dff; box-shadow: 0 0 5px #528dff; }
+        .heat-lvl-4 { background: #afc6ff; box-shadow: 0 0 8px #afc6ff; }
+
+        .toggle-checkbox:checked { right: 0; border-color: #528dff; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #528dff; }
+    </style>
+</head>
+<body class="font-body-md text-body-md bg-background text-on-background min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- Ambient Background Layer -->
+<div class="fixed inset-0 pointer-events-none z-[-1]" style="background: radial-gradient(circle at 50% 0%, rgba(82, 141, 255, 0.1) 0%, rgba(10, 10, 12, 1) 60%);"></div>
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-full py-8 bg-surface/40 backdrop-blur-[20px] fixed left-0 top-0 h-full w-sidebar_width border-r border-white/10 shadow-2xl z-50">
+<!-- Brand/Header -->
+<div class="px-8 mb-10 flex flex-col items-center">
+<div class="w-24 h-24 hex-badge flex items-center justify-center aura-glow-s mb-4 cursor-pointer hover:scale-105 transition-transform">
+<img alt="User Avatar" class="w-full h-full object-cover hex-badge absolute inset-0 z-10 opacity-80" data-alt="A striking futuristic avatar portrait of a powerful 'Hunter' character, intense gaze, glowing blue eyes, sleek dark sci-fi armor with subtle neon accents. The lighting is dramatic, high-contrast chiaroscuro, against a deep black void background. Cyberpunk and Solo Leveling aesthetic, highly detailed, premium digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFzDxnT9oCYpkWHL1e79kQoO1ULIU6SgoGBh8sHAjI3trhoFuJT-38uL1Je4R8Lg4QYBiHLFUiMXtfloILi2DUi3MwkAETOkuOYvGDJ_HimdXvhanJ8Q1HcgZMuLxqCARgJ7HRGQIkTgmpnj4o3ynKLbTew_Vy_WLiKdQEIfN1kqGFq_4vveYHmYHn1jQ5I_J77X2W1EuHe8ttwvCSSOujycPDMzTkCLum-7cQ6gKX1HJlctyxzttTNw">
+<span class="font-stat-xl text-stat-xl text-primary hex-content glow-text font-bold z-20 mix-blend-screen">E</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tighter text-center">LEVEL 42 MEMBER</h1>
+<p class="font-label-caps text-label-caps text-secondary mt-1 tracking-widest text-center">Elite Path</p>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto px-4 space-y-2">
+<a class="flex items-center space-x-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95 group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-weight="fill">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center space-x-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95 group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-weight="fill">fitness_center</span>
+<span class="font-body-md">Workouts</span>
+</a>
+<a class="flex items-center space-x-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95 group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-weight="fill">restaurant</span>
+<span class="font-body-md">Nutrition</span>
+</a>
+<a class="flex items-center space-x-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95 group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-weight="fill">insights</span>
+<span class="font-body-md">Progress</span>
+</a>
+<a class="flex items-center space-x-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95 group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-weight="fill">military_tech</span>
+<span class="font-body-md">Achievements</span>
+</a>
+<a class="flex items-center space-x-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95 group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-weight="fill">ads_click</span>
+<span class="font-body-md">Challenges</span>
+</a>
+
+<a class="flex items-center space-x-4 px-4 py-3 rounded-lg text-primary font-bold border-r-4 border-primary bg-primary/5 transition-all duration-300 active:scale-95 group" href="#">
+<span class="material-symbols-outlined text-primary" data-weight="fill">person</span>
+<span class="font-body-md">Profile</span>
+</a>
+<a class="flex items-center space-x-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 active:scale-95 group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-weight="fill">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</div>
+<div class="px-8 mt-auto pt-8">
+<button class="w-full py-3 px-4 bg-primary text-on-primary font-label-caps text-label-caps rounded uppercase font-bold tracking-wider hover:shadow-[0_0_15px_rgba(175,198,255,0.6)] transition-all duration-300 active:scale-95 flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-sm">fitness_center</span> GO TO LOG
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:ml-[280px] min-h-screen flex flex-col relative">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center h-20 px-margin_desktop bg-surface/40 backdrop-blur-[30px] border-b border-white/10 shadow-lg sticky top-0 z-40 w-full">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface p-2 rounded hover:bg-white/5">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-headline-lg text-headline-lg font-extrabold text-primary uppercase italic md:block hidden">FIT JOURNEY</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-extrabold text-primary uppercase italic md:hidden block">FIT JOURNEY</div>
+</div>
+<div class="flex items-center gap-6">
+<!-- Search -->
+<div class="hidden lg:flex items-center bg-black/40 border border-white/10 rounded-full px-4 py-2 focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+<span class="material-symbols-outlined text-outline text-sm mr-2">search</span>
+<input class="bg-transparent border-none text-body-md text-on-surface placeholder-outline focus:ring-0 w-48 font-label-caps focus:outline-none" placeholder="Search logs..." type="text">
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-white/5 active:scale-95 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full animate-pulse"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-white/5 active:scale-95 hidden sm:block">
+<span class="material-symbols-outlined">contrast</span>
+</button>
+<!-- Mobile Avatar -->
+<div class="md:hidden w-10 h-10 hex-badge flex items-center justify-center aura-glow-s ml-2">
+<img alt="Elite Badge" class="w-full h-full object-cover hex-badge absolute inset-0 z-10 opacity-80" data-alt="A striking futuristic avatar portrait of a powerful 'Hunter' character, intense gaze, glowing blue eyes, sleek dark sci-fi armor with subtle neon accents. The lighting is dramatic, high-contrast chiaroscuro, against a deep black void background. Cyberpunk and Solo Leveling aesthetic, highly detailed, premium digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCj5zqu2YH8FBVnn3SLFu4rwdc24k0MmSlBgAJcaBuxi-SrnLxZsZBVdroeNoEQZNvKd0Dzg2BbJNOoiqHTekr_mLrwPAzRgqy1gLm0WhqFPMSJby4-_ITvsvMwY3LlsPbWKmw1Cx6wXKowoDAEORcWr7y55qxSaybxYNNfLJnCF4-KHz1z9EUZsOO-j546BRD5em6RT5JTL-U9epgoQGOEFe8bsRs_wp2j0rjDSrNxKOII2gKzEfZuQ">
+<span class="text-xs text-primary hex-content font-bold z-20">E</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Profile Canvas -->
+<div class="flex-1 p-margin_mobile md:p-margin_desktop max-w-container_max mx-auto w-full pb-24 md:pb-12">
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface mb-2 glow-text">User Profile</h2>
+<p class="text-on-surface-variant font-body-md">Manage your stats, review your journey, and configure your system interface.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- ID Card / Main Profile (Col Span 4) -->
+<div class="glass-panel rounded-xl p-6 lg:col-span-4 flex flex-col relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-700"></div>
+<div class="flex items-start justify-between mb-8 relative z-10">
+<div>
+<div class="font-label-caps text-label-caps text-primary tracking-widest mb-1 uppercase">Current Rank</div>
+<div class="font-stat-xl text-stat-xl text-on-surface font-extrabold flex items-baseline gap-2">
+<span class="text-primary glow-text">Elite</span> Tier
+                            </div>
+</div>
+<div class="w-16 h-16 hex-badge flex items-center justify-center shadow-[0_0_15px_rgba(175,198,255,0.4)]">
+<span class="font-headline-md text-headline-md text-primary hex-content font-bold">42</span>
+</div>
+</div>
+<div class="mb-8 relative z-10">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-caps text-label-caps text-outline uppercase">Experience</span>
+<span class="font-label-caps text-label-caps text-primary">84,500 / 100,000 XP</span>
+</div>
+<div class="h-2 w-full xp-bar-bg rounded-full overflow-hidden">
+<div class="h-full xp-bar-fill w-[84.5%] rounded-full shadow-[0_0_10px_rgba(82,141,255,0.8)]"></div>
+</div>
+<p class="text-xs text-on-surface-variant mt-2 text-right">15,500 XP to Level 43</p>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-auto relative z-10">
+<div class="bg-surface-container/50 p-4 rounded border border-white/5">
+<div class="font-label-caps text-label-caps text-outline mb-1">STR</div>
+<div class="font-headline-md text-headline-md text-on-surface">124</div>
+</div>
+<div class="bg-surface-container/50 p-4 rounded border border-white/5">
+<div class="font-label-caps text-label-caps text-outline mb-1">AGI</div>
+<div class="font-headline-md text-headline-md text-secondary">98</div>
+</div>
+<div class="bg-surface-container/50 p-4 rounded border border-white/5">
+<div class="font-label-caps text-label-caps text-outline mb-1">VIT</div>
+<div class="font-headline-md text-headline-md text-tertiary">105</div>
+</div>
+<div class="bg-surface-container/50 p-4 rounded border border-white/5">
+<div class="font-label-caps text-label-caps text-outline mb-1">INT</div>
+<div class="font-headline-md text-headline-md text-on-surface-variant">64</div>
+</div>
+</div>
+</div>
+<!-- Center Col: Activity & Achievements (Col Span 5) -->
+<div class="lg:col-span-5 flex flex-col gap-gutter">
+<!-- Activity Heatmap -->
+<div class="glass-panel rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+                                Workout Frequency
+                            </h3>
+<span class="font-label-caps text-label-caps text-outline">Last 30 Days</span>
+</div>
+<!-- Simple Heatmap Mock -->
+<div class="grid grid-cols-7 gap-2 mb-4">
+<!-- Weekdays header -->
+<div class="text-center text-[10px] text-outline font-label-caps">M</div>
+<div class="text-center text-[10px] text-outline font-label-caps">T</div>
+<div class="text-center text-[10px] text-outline font-label-caps">W</div>
+<div class="text-center text-[10px] text-outline font-label-caps">T</div>
+<div class="text-center text-[10px] text-outline font-label-caps">F</div>
+<div class="text-center text-[10px] text-outline font-label-caps">S</div>
+<div class="text-center text-[10px] text-outline font-label-caps">S</div>
+<!-- Cells -->
+<!-- Row 1 -->
+<div class="aspect-square rounded heat-lvl-2 heat-map-cell" title="2 Workouts"></div>
+<div class="aspect-square rounded heat-lvl-1 heat-map-cell" title="1 Workout"></div>
+<div class="aspect-square rounded heat-lvl-0 heat-map-cell" title="Rest Day"></div>
+<div class="aspect-square rounded heat-lvl-3 heat-map-cell" title="3 Workouts"></div>
+<div class="aspect-square rounded heat-lvl-4 heat-map-cell" title="4+ Workouts"></div>
+<div class="aspect-square rounded heat-lvl-1 heat-map-cell" title="1 Workout"></div>
+<div class="aspect-square rounded heat-lvl-0 heat-map-cell" title="Rest Day"></div>
+<!-- Row 2 -->
+<div class="aspect-square rounded heat-lvl-1 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-2 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-2 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-0 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-3 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-3 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-1 heat-map-cell"></div>
+<!-- Row 3 -->
+<div class="aspect-square rounded heat-lvl-4 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-3 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-1 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-0 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-2 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-2 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-2 heat-map-cell"></div>
+<!-- Row 4 -->
+<div class="aspect-square rounded heat-lvl-1 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-1 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-3 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-4 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-2 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-0 heat-map-cell"></div>
+<div class="aspect-square rounded heat-lvl-0 heat-map-cell"></div>
+</div>
+<div class="flex items-center justify-end gap-2 text-xs font-label-caps text-outline">
+<span class="">Less</span>
+<div class="w-3 h-3 rounded heat-lvl-0"></div>
+<div class="w-3 h-3 rounded heat-lvl-1"></div>
+<div class="w-3 h-3 rounded heat-lvl-2"></div>
+<div class="w-3 h-3 rounded heat-lvl-3"></div>
+<div class="w-3 h-3 rounded heat-lvl-4"></div>
+<span class="">More</span>
+</div>
+</div>
+<!-- Achievements -->
+<div class="glass-panel rounded-xl p-6 flex-1">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">workspace_premium</span>
+                                Badges &amp; Achievements
+                            </h3>
+<button class="text-primary hover:text-primary-fixed-dim font-label-caps text-xs">VIEW ALL</button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Title 1 -->
+<div class="flex items-center gap-4 p-3 bg-surface-container/40 border border-tertiary/20 rounded-lg hover:border-tertiary/50 transition-colors group">
+<div class="w-12 h-12 rounded bg-tertiary/10 flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">electric_bolt</span>
+</div>
+<div class="flex-1">
+<h4 class="font-body-md font-semibold text-on-surface">Power Lifter</h4>
+<p class="text-xs text-on-surface-variant">Completed 100 Strength Workouts.</p>
+</div>
+<span class="font-label-caps text-[10px] text-tertiary bg-tertiary/10 px-2 py-1 rounded">EQUIPPED</span>
+</div>
+<!-- Title 2 -->
+<div class="flex items-center gap-4 p-3 bg-surface-container/30 border border-white/5 rounded-lg hover:border-white/20 transition-colors group">
+<div class="w-12 h-12 rounded bg-white/5 flex items-center justify-center text-outline group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">directions_run</span>
+</div>
+<div class="flex-1">
+<h4 class="font-body-md font-semibold text-on-surface-variant">Endurance Runner</h4>
+<p class="text-xs text-on-surface-variant/70">Surpass 10km in a single run.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- System Settings (Col Span 3) -->
+<div class="glass-panel rounded-xl p-6 lg:col-span-3 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold flex items-center gap-2 mb-6 pb-4 border-b border-white/10">
+<span class="material-symbols-outlined text-secondary">settings_suggest</span>
+                        System Config
+                    </h3>
+<div class="space-y-6">
+<!-- Theme Toggle -->
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-body-md text-on-surface">Interface Mode</h4>
+<p class="text-xs text-on-surface-variant font-label-caps">Dark / Light UI</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-surface appearance-none cursor-pointer z-10 transition-all checked:translate-x-6 checked:border-primary" id="toggle_theme" name="toggle_theme" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-high cursor-pointer border border-white/10" for="toggle_theme"></label>
+</div>
+</div>
+<!-- Notifications Toggle -->
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-body-md text-on-surface">Workout Notifications</h4>
+<p class="text-xs text-on-surface-variant font-label-caps">Push Notifications</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-surface appearance-none cursor-pointer z-10 transition-all checked:translate-x-6 checked:border-primary" id="toggle_alerts" name="toggle_alerts" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-high cursor-pointer border border-white/10" for="toggle_alerts"></label>
+</div>
+</div>
+<!-- Privacy Toggle -->
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-body-md text-on-surface">Public Profile</h4>
+<p class="text-xs text-on-surface-variant font-label-caps">Visible on Leaderboard</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-surface appearance-none cursor-pointer z-10 transition-all checked:translate-x-6 checked:border-primary" id="toggle_privacy" name="toggle_privacy" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-high cursor-pointer border border-white/10" for="toggle_privacy"></label>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-8">
+<button class="w-full py-3 border border-error/50 text-error hover:bg-error/10 font-label-caps rounded uppercase font-bold tracking-wider transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-sm">logout</span> SYSTEM LOGOUT
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav (Mobile Only) -->
+<!-- Assuming this is a top-level destination, bottom nav is rendered on mobile -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-[20px] border-t border-white/10 z-50 flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center w-12 h-12 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<span class="text-[10px] font-label-caps mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center w-12 h-12 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">fitness_center</span>
+<span class="text-[10px] font-label-caps mt-1">Log</span>
+</a>
+<a class="flex flex-col items-center justify-center w-12 h-12 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl" data-weight="fill">person</span>
+<span class="text-[10px] font-label-caps mt-1 font-bold">Profile</span>
+</a>
+</div>
+
+
+</body></html>
