@@ -577,8 +577,13 @@
       stepCount: 0,
       caloriesBurned: 0,
       lastAccel: { x: 0, y: 0, z: 0 },
-      motionThreshold: 12,
+      motionThreshold: 8,
       stepGoal: 0,
+      _lastStepTime: 0,
+      _stepCooldown: 280,
+      _peakValue: 0,
+      _isPeaking: false,
+      _hasAccelerometer: false,
       heartRateZone: 'moderate',
 
       init: function() {
@@ -1198,6 +1203,7 @@
                   '<div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">' +
                     '<div id="stepBar" style="height:100%;background:linear-gradient(90deg,#ffb95f,#ff6b6b);border-radius:2px;transition:width 0.5s linear;width:' + stepPct + '%;"></div></div>' +
                 '</div>' +
+                '<div id="manualStepBtn" onclick="App.addManualStep()" style="margin-bottom:12px;padding:12px;border-radius:10px;background:rgba(255,185,95,0.1);border:1px dashed rgba(255,185,95,0.3);text-align:center;cursor:pointer;display:none;"><span style="font-size:12px;color:#ffb95f;font-weight:600;">Tap to Add Step</span></div>' +
                 '<div style="display:flex;gap:8px;">' +
                   '<button onclick="App.stopGymTimer();App.renderPage()" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,100,100,0.3);background:rgba(255,100,100,0.1);color:#ff6b6b;font-family:Sora,sans-serif;font-size:12px;font-weight:600;cursor:pointer;">Stop</button>' +
                   '<button onclick="App.finishWorkout()" style="flex:1;padding:10px;border-radius:8px;border:none;background:linear-gradient(135deg,#4edea3,#c3f400);color:#1a1d24;font-family:Sora,sans-serif;font-size:12px;font-weight:600;cursor:pointer;">Finish</button>' +
@@ -1325,6 +1331,12 @@
           }
         }, 1000);
         this.startMotionTracking();
+        setTimeout(function() {
+          var manualBtn = document.getElementById('manualStepBtn');
+          if (manualBtn && !self._hasAccelerometer) {
+            manualBtn.style.display = 'block';
+          }
+        }, 1000);
       },
 
       stopGymTimer: function() {
@@ -1338,16 +1350,22 @@
         this.stepCount = 0;
         this.caloriesBurned = 0;
         this.lastAccel = { x: 0, y: 0, z: 0 };
+        this._lastStepTime = 0;
+        this._peakValue = 0;
+        this._isPeaking = false;
+        this._hasAccelerometer = false;
         this.motionTracking = true;
 
         if (window.DeviceMotionEvent) {
           if (typeof DeviceMotionEvent.requestPermission === 'function') {
             DeviceMotionEvent.requestPermission().then(function(state) {
               if (state === 'granted') {
+                self._hasAccelerometer = true;
                 window.addEventListener('devicemotion', self._motionHandler.bind(self));
               }
             }).catch(function() {});
           } else {
+            self._hasAccelerometer = true;
             window.addEventListener('devicemotion', self._motionHandler.bind(self));
           }
         }
@@ -1377,11 +1395,42 @@
         var deltaX = Math.abs(x - this.lastAccel.x);
         var deltaY = Math.abs(y - this.lastAccel.y);
         var deltaZ = Math.abs(z - this.lastAccel.z);
+        var magnitude = Math.sqrt(x * x + y * y + z * z);
+        var deltaMag = Math.abs(magnitude - Math.sqrt(
+          this.lastAccel.x * this.lastAccel.x +
+          this.lastAccel.y * this.lastAccel.y +
+          this.lastAccel.z * this.lastAccel.z
+        ));
         var totalDelta = deltaX + deltaY + deltaZ;
-        if (totalDelta > this.motionThreshold) {
-          this.stepCount++;
+        var now = Date.now();
+        var movement = Math.max(totalDelta, deltaMag);
+
+        if (movement > this._peakValue) {
+          this._peakValue = movement;
+          this._isPeaking = true;
+        } else if (this._isPeaking && movement < this._peakValue * 0.7) {
+          if (this._peakValue > this.motionThreshold) {
+            if (now - this._lastStepTime > this._stepCooldown) {
+              this.stepCount++;
+              this._lastStepTime = now;
+            }
+          }
+          this._peakValue = 0;
+          this._isPeaking = false;
         }
+
         this.lastAccel = { x: x, y: y, z: z };
+      },
+
+      addManualStep: function() {
+        if (!this.motionTracking) return;
+        var now = Date.now();
+        if (now - this._lastStepTime > 200) {
+          this.stepCount++;
+          this._lastStepTime = now;
+          var stepEl = document.getElementById('stepCount');
+          if (stepEl) stepEl.textContent = this.stepCount.toLocaleString();
+        }
       },
 
       stopMotionTracking: function() {
